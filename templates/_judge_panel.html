@@ -1,0 +1,100 @@
+<div class="panel judge-results-panel">
+  <h3 style="margin:6px 0 10px;color:#e53935">Results</h3>
+  {% if panel.current %}
+    <div class="judge-result-current">
+      <div class="match-header">
+        <strong>{{ panel.current.red }} vs {{ panel.current.white }}</strong>
+        <span class="badge">{{ panel.current.weight_class }}</span>
+      </div>
+      <div class="small">{{ panel.current.headline }}</div>
+      {% if panel.current.judges %}
+      <ul class="judge-card-list">
+        {% for card in panel.current.judges %}
+        {% set display_name = card.judge_name if card.judge_name else (judge_labels[card.judge_id] if card.judge_id in judge_labels else ('Judge ' ~ card.judge_id)) %}
+        <li>
+          <strong>{{ display_name }}:</strong>
+          {{ card.scoreline }} — {{ card.breakdown }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% if panel.current.pending_judges %}
+      <div class="small">Waiting on {{ 'Judge' if panel.current.pending_judges|length == 1 else 'Judges' }} {{ panel.current.pending_judges | join(', ') }}.</div>
+      {% endif %}
+    </div>
+  {% else %}
+    <p class="muted">No active match in the queue.</p>
+  {% endif %}
+
+  {% if panel.history %}
+    <hr class="sep">
+    <h4 style="margin:4px 0 8px;color:#e53935">Previous Fights</h4>
+    <div class="judge-history-list">
+      {% for match in panel.history %}
+      <details class="judge-history-item">
+        <summary>
+          <div class="history-summary">
+            <span class="name">{{ match.red }} vs {{ match.white }}</span>
+            <span class="badge">{{ match.weight_class }}</span>
+          </div>
+          <div class="small">{{ match.headline }}</div>
+        </summary>
+        <div class="history-body">
+          {% if match.completed_at %}
+          <div class="small">Completed {{ match.completed_at | datetimefromts }}</div>
+          {% endif %}
+          <div class="small">
+            {% if match.decision and match.decision|lower == 'ko' %}
+              <span class="badge" style="background:#222;color:#fff">Knockout</span>
+            {% endif %}
+            {% if match.winner_name %}
+              Winner: <strong>{{ match.winner_name }}</strong>
+            {% endif %}
+            {% if match.decision %}
+              &mdash; {{ match.decision|capitalize }}
+            {% endif %}
+          </div>
+          <ul class="judge-card-list">
+            {% if match.judges and match.judges|length > 0 %}
+              {% for card in match.judges %}
+              {% set display_name = card.judge_name if card.judge_name else (judge_labels[card.judge_id] if card.judge_id in judge_labels else ('Judge ' ~ card.judge_id)) %}
+              <li>
+                <strong>{{ display_name }}:</strong>
+                {{ card.scoreline }} &mdash; {{ card.breakdown }}
+              </li>
+              {% endfor %}
+            {% elif match.decision and match.decision|lower == 'ko' %}
+              <li>
+                <span class="badge" style="background:#222;color:#fff">Knockout</span>
+                <strong>{{ match.winner_name }}</strong> wins by KO
+              </li>
+            {% endif %}
+          </ul>
+          {% if view == 'admin' %}
+          <div class="judge-edit-forms">
+            {% for card in match.judges %}
+            <form method="post" action="{{ url_for('schedule_judge_history_update') }}" class="judge-edit-form">
+              <input type="hidden" name="match_id" value="{{ match.match_id }}">
+              <input type="hidden" name="judge_id" value="{{ card.judge_id }}">
+              <input type="hidden" name="judge_name" value="{{ card.judge_name or '' }}">
+              <div class="judge-edit-grid">
+                {% for spec in category_specs %}
+                <label>{{ spec.label }}
+                  <input type="number" name="{{ spec.key }}" min="0" max="{{ spec.max }}" value="{{ card.sliders[spec.key] if card.sliders and spec.key in card.sliders else (spec.max // 2) }}">
+                </label>
+                {% endfor %}
+              </div>
+              {% set display_name = card.judge_name if card.judge_name else (judge_labels[card.judge_id] if card.judge_id in judge_labels else ('Judge ' ~ card.judge_id)) %}
+              <button class="btn btn-blue" type="submit">Update {{ display_name }}</button>
+            </form>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="muted">No previous matches yet.</p>
+  {% endif %}
+</div>

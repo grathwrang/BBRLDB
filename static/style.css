@@ -1,0 +1,171 @@
+
+@font-face {
+  font-family: 'Bank Gothic';
+  src: local('BankGothic Md BT'), local('Bank Gothic'), local('BankGothic');
+  font-weight: 700;
+  font-style: normal;
+}
+:root{
+  --bg:#111315;
+  --panel:#1a1c1f;
+  --panel2:#202225;
+  --text:#e6e6e6;
+  --muted:#a0a0a0;
+  --red:#e53935;
+  --green:#00c583;
+  --blue:#3ea6ff;
+  --btn:#2b2e32;
+  --btnBorder:#3a3f45;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter, 'Segoe UI', Roboto, Arial, sans-serif}
+.container{max-width:1400px;margin:0 auto;padding:8px 16px}
+.top-tabs{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #2a2e33}
+.top-tabs a{padding:6px 10px;background:#181a1d;border:1px solid #2a2e33;border-bottom:none;border-radius:6px 6px 0 0;color:#cfd8dc;text-decoration:none}
+.top-tabs a.active{background:#1f2226;color:#fff}
+.page-title{font-family:'Bank Gothic','BankGothic Md BT',Michroma,'Eurostile','Square 721',sans-serif;font-size:48px;font-weight:800;text-align:center;color:var(--red);margin:12px 0 8px;text-transform:capitalize}
+.panel{background:var(--panel);border:1px solid #2a2e33;border-radius:6px;padding:8px}
+table{width:100%;border-collapse:collapse;font-size:16px}
+th,td{padding:10px 12px;border-bottom:1px solid #2a2e33}
+thead th{color:var(--red);font-weight:800}
+td.center,th.center{text-align:center}
+td.right,th.right{text-align:right}
+.btn{background:var(--btn);border:1px solid var(--btnBorder);color:#fff;border-radius:6px;padding:8px 12px;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.btn-red{background:#9c2a28;border-color:#ab3b39}
+.btn-green{background:#0f8b63;border-color:#16a077}
+.btn-blue{background:#245d89;border-color:#2d74ac}
+.btn-ghost{background:#1c1f23;color:#ddd}
+.grid{display:grid;gap:12px}
+.grid-2{grid-template-columns:1fr 1fr}
+.grid-3{grid-template-columns:repeat(3, 1fr)}
+.grid-4{grid-template-columns:repeat(4, 1fr)}
+.footer{position:sticky;bottom:0;background:#0f1012;border-top:1px solid #2a2e33;padding:6px 10px;font-size:13px;line-height:1.25}
+.footer .row{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;margin:0}
+.footer form,label,.footer select,.footer input{font-size:13px}
+.footer label{margin:0;display:flex;flex-direction:column;gap:2px;font-size:12px}
+.footer h3{font-size:16px}
+.footer .footer-primary-actions{align-items:flex-end}
+.footer .footer-primary-actions form{margin:0}
+.footer .footer-generate-form{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;padding:6px 8px;border:1px solid #2a2e33;border-radius:6px;background:#151719}
+.footer .footer-generate-fields{display:flex;gap:8px;flex-wrap:wrap}
+.footer .footer-generate-form label{min-width:140px}
+.footer .footer-clear-form{align-self:flex-end}
+.footer .footer-manual-add{margin-top:8px !important;padding-top:4px;border-top:1px solid #2a2e33}
+.footer .footer-manual-add h3{font-size:15px}
+.footer .footer-manual-add form{gap:6px !important}
+.footer .footer-manual-add label{gap:4px}
+.footer .badge{padding:3px 6px;font-size:12px}
+.footer .btn{padding:6px 10px;font-size:13px}
+.footer .btn.btn-red,.footer .btn.btn-green,.footer .btn.btn-blue{line-height:1}
+.footer .row + .row{margin-top:6px}
+.footer details.footer-collapsible{border:1px solid #2a2e33;border-radius:6px;padding:6px 8px;background:#151719}
+.footer details.footer-collapsible[open]{background:#181b1e}
+.footer details.footer-collapsible summary{cursor:pointer;list-style:none}
+.footer details.footer-collapsible summary::-webkit-details-marker{display:none}
+label{display:block;font-size:14px;color:#cfd8dc;margin-bottom:4px}
+input,select{width:100%;background:#0f1114;color:#fff;border:1px solid #2a2e33;border-radius:6px;padding:8px}
+.badge{display:inline-block;background:#1f2226;border:1px solid #2a2e33;color:#cfd8dc;border-radius:6px;padding:4px 8px}
+.status{color:#cfd8dc}
+hr.sep{border:0;border-top:1px solid #2a2e33;margin:12px 0}
+.sidebar-actions{display:flex;flex-direction:column;gap:10px}
+.checkbox-inline{display:flex;align-items:center;justify-content:center}
+.dropzone{border:1px dashed #444;background:#17191c;color:#d0d0d0;border-radius:6px;height:220px;display:flex;align-items:center;justify-content:center;text-align:center}
+img.thumb{max-width:100%;max-height:220px;display:block;margin:auto}
+.small{font-size:12px;color:#aaa}
+pre.overlay{white-space:pre-wrap;word-break:break-word;background:#0b0c0e;padding:12px;border:1px solid #2a2e33;border-radius:6px}
+
+
+/* --- v3 fixes for image dropzone --- */
+.dropzone{position:relative}
+.dropzone input[type="file"]{position:absolute;left:0;top:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.dropzone .preview{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:10px}
+.dropzone .preview img{max-width:100%;max-height:100%;border-radius:4px}
+
+/* v5: modal + row hover */
+tr.robot-row{cursor:pointer}
+tr.robot-row:hover{background:#1f2226}
+dialog#robotModal{border:1px solid #2a2e33;background:#111315;color:#e6e6e6;border-radius:8px;max-width:1000px;width:1000px}
+dialog::backdrop{background:rgba(0,0,0,0.65)}
+.modal-body{padding:12px}
+.modal-actions{display:flex;justify-content:flex-end;padding:10px 12px;border-top:1px solid #2a2e33}
+.modal-close{background:#9c2a28;border:1px solid #ab3b39;color:#fff;border-radius:6px;padding:6px 12px;cursor:pointer}
+.info-grid{display:grid;grid-template-columns:220px 1fr 300px;gap:8px;align-items:start}
+.info-label{color:#cfd8dc}
+.info-value{background:#1a1c1f;border:1px solid #2a2e33;border-radius:4px;padding:4px 8px;display:inline-block}
+.card-image{max-width:100%;max-height:220px;border-radius:4px}
+
+.name-cell{font-family:'Bank Gothic','BankGothic Md BT',Michroma,'Eurostile','Square 721',sans-serif}
+
+.robot-link{cursor:pointer}
+.robot-link:hover{opacity:0.9}
+
+/* Judge pages */
+.judge-current{display:grid;gap:16px}
+.judge-fight-card{display:grid;grid-template-columns:1fr minmax(140px,180px) 1fr;gap:16px;align-items:center;background:var(--panel2);border:1px solid #2a2e33;border-radius:6px;padding:12px}
+.judge-robot{text-align:center;display:flex;flex-direction:column;gap:6px;min-width:0}
+.judge-robot-image-frame{width:100%;aspect-ratio:4/3;max-height:220px;background:#0f1114;border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.35)}
+.judge-robot-image{width:100%;height:100%;object-fit:cover}
+.judge-robot-image-placeholder{color:#777;font-size:12px;text-transform:uppercase;letter-spacing:1px}
+.judge-robot-red .judge-robot-image-frame{border:4px solid #c00}
+.judge-robot-white .judge-robot-image-frame{border:4px solid #fff}
+.judge-robot-name{font-family:'Bank Gothic','BankGothic Md BT',Michroma,'Eurostile','Square 721',sans-serif;font-size:24px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;white-space:normal;max-width:100%}
+.judge-fight-info{text-align:center;display:flex;flex-direction:column;gap:6px;justify-content:center}
+.judge-vs{font-family:'Bank Gothic','BankGothic Md BT',Michroma,'Eurostile','Square 721',sans-serif;font-size:40px;color:var(--red)}
+
+/* Public schedule now card & thumbnails */
+.now-card .now-grid{display:grid;grid-template-columns:1fr minmax(120px,140px) 1fr;gap:20px;align-items:stretch}
+.now-robot{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;background:var(--panel2);border:1px solid #2a2e33;padding:10px;border-radius:6px}
+.now-robot-image{width:100%;max-width:240px;max-height:180px;object-fit:contain;background:#111315;border:1px solid #2a2e33;border-radius:6px;padding:4px}
+.now-center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.now-vs{font-family:'Bank Gothic','BankGothic Md BT',Michroma,'Eurostile','Square 721',sans-serif;font-size:36px;color:var(--red)}
+.schedule-table .hidden-first{opacity:0;height:0;transform:scaleY(0);font-size:0;padding:0;border:none}
+.schedule-table .hidden-first > *{padding:0;border:none}
+.robot-thumb-wrapper{display:inline-flex;align-items:center;gap:6px}
+.robot-thumb{width:26px;height:26px;object-fit:cover;border:1px solid #2a2e33;border-radius:4px;background:#111315}
+@media (max-width: 900px){
+  .now-card .now-grid{grid-template-columns:1fr;}
+  .now-vs{font-size:28px}
+  .now-robot-image{max-width:180px}
+}
+
+.judge-controls{background:var(--panel2);border:1px solid #2a2e33;border-radius:6px;padding:12px;display:grid;gap:12px}
+.judge-name-field{display:flex;flex-direction:column;gap:6px;max-width:360px}
+.judge-slider-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.judge-slider{background:#1b1d21;border:1px solid #2a2e33;border-radius:6px;padding:10px;display:grid;gap:6px}
+.judge-slider-header{display:flex;align-items:center;justify-content:space-between;font-weight:600}
+.judge-slider-input{display:block;min-width:0}
+.judge-slider-input input[type=range]{width:100%}
+.slider-label{font-weight:600;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;min-width:0;flex-shrink:1}
+.slider-label.red{color:var(--red)}
+.slider-label.white{color:var(--blue)}
+.judge-slider-values{display:flex;align-items:center;justify-content:space-between;font-weight:600;margin-top:4px}
+.judge-slider-values .red{color:var(--red)}
+.judge-slider-values .white{color:var(--blue)}
+.judge-score-summary{display:flex;gap:16px;align-items:center;background:#1b1d21;border:1px solid #2a2e33;border-radius:6px;padding:10px}
+.judge-score-summary .red{color:var(--red);font-weight:700}
+.judge-score-summary .white{color:var(--blue);font-weight:700}
+.judge-actions{display:flex;align-items:center;gap:12px}
+.judge-other-cards ul{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:4px}
+.judge-history{margin-top:16px}
+.judge-history-list{display:grid;gap:10px}
+.judge-history-item{background:var(--panel2);border:1px solid #2a2e33;border-radius:6px}
+.judge-history-item summary{cursor:pointer;list-style:none;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.judge-history-item summary::-webkit-details-marker{display:none}
+.judge-history-item .history-body{padding:10px 12px;border-top:1px solid #2a2e33}
+.history-summary{display:flex;align-items:center;gap:8px}
+.judge-history-item ul{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:4px}
+
+/* Judge panel shared styles */
+.judge-results-panel{background:var(--panel);border:1px solid #2a2e33;border-radius:6px;padding:10px}
+.judge-result-current{margin-bottom:10px;display:grid;gap:6px}
+.judge-card-list{list-style:none;padding:0;margin:6px 0 0;display:grid;gap:4px}
+.judge-history-list .judge-edit-form{background:#1b1d21;border:1px solid #2a2e33;border-radius:6px;padding:10px;margin-top:8px;display:grid;gap:8px}
+.judge-edit-grid{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.judge-edit-form input{width:100%}
+.judge-edit-forms{display:grid;gap:10px}
+
+@media (max-width: 900px){
+  .judge-fight-card{grid-template-columns:1fr;justify-items:center}
+  .judge-controls{order:3}
+}
