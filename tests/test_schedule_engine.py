@@ -1,17 +1,26 @@
+import copy
+
+import pytest
+
 import schedule_engine
 
 
-def test_generate_loads_db_when_not_provided(monkeypatch):
-    sample_db = {
-        "feather": {
-            "robots": {
-                "Alpha": {"present": True, "rating": 1000},
-                "Bravo": {"present": True, "rating": 1000},
-            },
-            "history": [],
+@pytest.fixture
+def sample_db():
+    return copy.deepcopy(
+        {
+            "feather": {
+                "robots": {
+                    "Alpha": {"present": True, "rating": 1000},
+                    "Bravo": {"present": True, "rating": 1000},
+                },
+                "history": [],
+            }
         }
-    }
+    )
 
+
+def test_generate_loads_db_when_not_provided(monkeypatch, sample_db):
     calls = {"count": 0}
 
     def fake_load_all():
@@ -31,32 +40,23 @@ def test_generate_loads_db_when_not_provided(monkeypatch):
 
 def test_has_unscheduled_fresh_opponent_recognizes_available_pair():
     db = {
-        'feather': {
-            'robots': {
-                'Alpha': {'present': True, 'rating': 1000},
-                'Bravo': {'present': True, 'rating': 1010},
-                'Charlie': {'present': True, 'rating': 980},
-                'Delta': {'present': True, 'rating': 990},
+        "feather": {
+            "robots": {
+                "Alpha": {"present": True, "rating": 1000},
+                "Bravo": {"present": True, "rating": 1010},
+                "Charlie": {"present": True, "rating": 980},
+                "Delta": {"present": True, "rating": 990},
             },
             "history": [],
         }
     }
 
-    calls = {"count": 0}
+    schedule = schedule_engine.generate(db_by_class=db, seed=1)
 
-    def fake_load_all():
-        calls["count"] += 1
-        return sample_db
-
-    monkeypatch.setattr(schedule_engine, "_load_all_dbs", fake_load_all)
-
-    schedule = schedule_engine.generate(seed=1)
-
-    assert calls["count"] == 1
-    assert len(schedule) == 1
-    match = schedule[0]
-    assert match["weight_class"] == "feather"
-    assert {match["red"], match["white"]} == {"Alpha", "Bravo"}
+    assert len(schedule) == 2
+    first_match = schedule[0]
+    assert first_match["weight_class"] == "feather"
+    assert {first_match["red"], first_match["white"]} == {"Alpha", "Bravo"}
 
 
 def test_generate_avoids_history_and_repeats():
@@ -79,7 +79,10 @@ def test_generate_avoids_history_and_repeats():
 
     scheduled_pairs = [frozenset((match["red"], match["white"])) for match in schedule]
 
-    assert all(pair not in {frozenset({"Alpha", "Bravo"}), frozenset({"Charlie", "Delta"})} for pair in scheduled_pairs)
+    assert all(
+        pair not in {frozenset({"Alpha", "Bravo"}), frozenset({"Charlie", "Delta"})}
+        for pair in scheduled_pairs
+    )
     assert len(scheduled_pairs) == len(set(scheduled_pairs)), "No pair should repeat in a single night"
 
 
@@ -105,7 +108,7 @@ def test_generate_enforces_cooldown_spacing():
         white = match["white"]
         for robot in (red, white):
             if robot in last_seen:
-                assert index - last_seen[robot] > schedule_engine.COOLDOWN_MATCHES
+                assert index - last_seen[robot] > schedule_engine.DEFAULT_COOLDOWN_MATCHES
             last_seen[robot] = index
 
     assert len({frozenset((m["red"], m["white"])) for m in schedule}) == len(schedule)
