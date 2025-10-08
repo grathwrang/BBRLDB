@@ -5,6 +5,8 @@ from unittest import mock
 
 from flask import url_for
 
+from judging import create_judge_record
+
 import app as bot_app
 import storage
 
@@ -102,6 +104,64 @@ class AppRoutesTestCase(unittest.TestCase):
         resp = self.client.get("/SchedulePublic")
         self.assertEqual(resp.status_code, 200)
         self.assertIn(b"No fights are scheduled yet", resp.data)
+
+    def test_finalize_current_match_updates_elo_from_judges(self):
+        wc = bot_app.WEIGHT_CLASSES[0]
+        red = "Alpha"
+        white = "Beta"
+
+        db = storage.load_db(wc)
+        db["robots"][red] = {"rating": 1000, "matches": []}
+        db["robots"][white] = {"rating": 1000, "matches": []}
+        storage.save_db(wc, db)
+
+        schedule_card = {"weight_class": wc, "red": red, "white": white}
+        schedule_data = {"list": [dict(schedule_card)]}
+        storage.save_schedule(schedule_data)
+
+        judges = {
+            "1": create_judge_record(
+                1,
+                {"damage": 7, "aggression": 4, "control": 5},
+                judge_name="Judge 1",
+            ),
+            "2": create_judge_record(
+                2,
+                {"damage": 6, "aggression": 3, "control": 4},
+                judge_name="Judge 2",
+            ),
+            "3": create_judge_record(
+                3,
+                {"damage": 1, "aggression": 1, "control": 1},
+                judge_name="Judge 3",
+            ),
+        }
+
+        match_state = {
+            "match_id": "test-match",
+            "weight_class": wc,
+            "red": red,
+            "white": white,
+            "judges": judges,
+        }
+
+        state = {"current": match_state, "history": [], "_meta": {"version": 1, "updated_at": 0}}
+
+        updated_state, updated_schedule = bot_app.finalize_current_match(state, schedule_data)
+
+        self.assertIsNone(updated_state.get("current"))
+        self.assertEqual(updated_schedule.get("list"), [])
+
+        db_after = storage.load_db(wc)
+        history = db_after.get("history", [])
+        self.assertEqual(len(history), 1)
+        entry = history[0]
+        self.assertTrue(entry["result"].startswith("Red wins JD"))
+        self.assertEqual(db_after["robots"][red]["rating"], 1016)
+        self.assertEqual(db_after["robots"][white]["rating"], 984)
+        self.assertEqual(db_after["robots"][red]["matches"][0]["match_id"], entry["match_id"])
+        self.assertEqual(entry["change_red"], 16)
+        self.assertEqual(entry["change_white"], -16)
 
 
 if __name__ == "__main__":  # pragma: no cover

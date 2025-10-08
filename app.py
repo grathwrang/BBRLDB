@@ -130,6 +130,110 @@ def robot_display(weight_class, name):
     }
 
 
+def _resolve_robot_record(robots, name):
+    if not name:
+        return None, None
+    if name in robots:
+        return name, robots[name]
+    lower_map = {k.lower(): k for k in robots.keys()}
+    actual = lower_map.get(name.lower())
+    if actual:
+        return actual, robots[actual]
+    return None, None
+
+
+def persist_judged_result(weight_class, red_name, white_name, judged_result):
+    """Persist a judged match outcome to the Elo database.
+
+    Returns ``(entry, resolved_red, resolved_white)``. ``entry`` is ``None`` if
+    either robot cannot be found and no update is performed.
+    """
+
+    if (
+        weight_class not in WEIGHT_CLASSES
+        or not red_name
+        or not white_name
+        or not judged_result
+    ):
+        return None, red_name, white_name
+
+    db = load_db(weight_class)
+    robots = db.setdefault("robots", {})
+    k_base, ko_weight = get_settings(db)
+
+    red_key, red_robot = _resolve_robot_record(robots, red_name)
+    white_key, white_robot = _resolve_robot_record(robots, white_name)
+
+    if red_robot is None or white_robot is None:
+        return None, red_key or red_name, white_key or white_name
+
+    result_label = judged_result.strip()
+    base_result = result_label.split("(", 1)[0].strip().lower()
+
+    if base_result.startswith("red wins ko"):
+        canonical = "Red wins KO"
+        s_r, s_w, w_r, w_w = 1, 0, ko_weight, 1
+    elif base_result.startswith("red wins"):
+        canonical = "Red wins JD"
+        s_r, s_w, w_r, w_w = 1, 0, 1, 1
+    elif base_result.startswith("white wins ko"):
+        canonical = "White wins KO"
+        s_r, s_w, w_r, w_w = 0, 1, 1, ko_weight
+    elif base_result.startswith("white wins"):
+        canonical = "White wins JD"
+        s_r, s_w, w_r, w_w = 0, 1, 1, 1
+    elif base_result.startswith("draw"):
+        canonical = "Draw"
+        s_r = s_w = 0.5
+        w_r = w_w = 1
+    else:
+        return None, red_key or red_name, white_key or white_name
+
+    rr = red_robot
+    rw = white_robot
+    old_r = rr.get("rating", DEFAULT_RATING)
+    old_w = rw.get("rating", DEFAULT_RATING)
+    e_r = get_expected(old_r, old_w)
+    e_w = 1 - e_r
+    k_r = get_k_for_robot(len(rr.get("matches", [])), k_base)
+    k_w = get_k_for_robot(len(rw.get("matches", [])), k_base)
+
+    if canonical == "Draw":
+        new_r = old_r
+        new_w = old_w
+    else:
+        new_r = round(old_r + k_r * ((s_r * w_r) - e_r))
+        new_w = round(old_w + k_w * ((s_w * w_w) - e_w))
+
+    mid = db.get("next_match_id", 1)
+    ts = int(time.time())
+    entry = {
+        "match_id": mid,
+        "timestamp": ts,
+        "red_corner": red_key,
+        "white_corner": white_key,
+        "result": result_label if result_label else canonical,
+        "old_rating_red": old_r,
+        "old_rating_white": old_w,
+        "new_rating_red": new_r,
+        "new_rating_white": new_w,
+        "change_red": new_r - old_r,
+        "change_white": new_w - old_w,
+    }
+
+    db.setdefault("history", []).append(entry)
+    db["next_match_id"] = mid + 1
+
+    rr["rating"] = new_r
+    rw["rating"] = new_w
+    rr.setdefault("matches", []).append(entry)
+    rw.setdefault("matches", []).append(entry)
+
+    save_db(weight_class, db)
+
+    return entry, red_key, white_key
+
+
 def finalize_current_match(state, schedule_data):
     current = state.get("current")
     if not current:
@@ -155,6 +259,33 @@ def finalize_current_match(state, schedule_data):
                     break
     save_schedule(schedule_data)
 
+    summary = history_entry.get("summary") if isinstance(history_entry, dict) else None
+    judged_result = None
+    if summary and summary.get("is_complete"):
+        decision = summary.get("decision")
+        winner = summary.get("winner")
+        detail = None
+        if winner == "red":
+            base = "Red wins JD"
+            if decision and decision not in {"decision", "draw"}:
+                detail = decision.title()
+        elif winner == "white":
+            base = "White wins JD"
+            if decision and decision not in {"decision", "draw"}:
+                detail = decision.title()
+        elif winner == "draw":
+            base = "Draw"
+        else:
+            base = None
+        if base:
+            judged_result = base if detail is None or base == "Draw" else f"{base} ({detail})"
+
+    if judged_result:
+        wc = history_entry.get("weight_class")
+        red_name = history_entry.get("red")
+        white_name = history_entry.get("white")
+        persist_judged_result(wc, red_name, white_name, judged_result)
+
     state, changed = ensure_state_for_schedule(state, schedule_list)
     if changed:
         save_judging_state(state)
@@ -179,38 +310,12 @@ def submit_match():
     if wc not in WEIGHT_CLASSES or not red or not white or result not in VALID_RESULTS or red == white:
         flash("Bad match input", "error")
         return redirect(url_for("index", wc=wc or WEIGHT_CLASSES[0]))
-    db = load_db(wc)
-    robots = db.setdefault("robots", {})
-    # Allow case-insensitive robot name input
-    if red not in robots or white not in robots:
-        lower_map = {k.lower(): k for k in robots.keys()}
-        if red not in robots and red.lower() in lower_map:
-            red = lower_map[red.lower()]
-        if white not in robots and white.lower() in lower_map:
-            white = lower_map[white.lower()]
-    if red not in robots or white not in robots:
-        flash("Robot not found", "error"); return redirect(url_for("index", wc=wc))
-    rr = robots[red]; rw = robots[white]
-    old_r = rr.get("rating", DEFAULT_RATING); old_w = rw.get("rating", DEFAULT_RATING)
-    e_r = get_expected(old_r, old_w); e_w = 1 - e_r
-    k_base, ko_w = get_settings(db)
-    if result == "Red wins JD": s_r,s_w,w_r,w_w=1,0,1,1
-    elif result == "Red wins KO": s_r,s_w,w_r,w_w=1,0,ko_w,1
-    elif result == "White wins JD": s_r,s_w,w_r,w_w=0,1,1,1
-    elif result == "White wins KO": s_r,s_w,w_r,w_w=0,1,1,ko_w
-    else: s_r,s_w,w_r,w_w=0.5,0.5,1,1
-    k_r = get_k_for_robot(len(rr.get("matches", [])), k_base)
-    k_w = get_k_for_robot(len(rw.get("matches", [])), k_base)
-    new_r = round(old_r + k_r * ((s_r * w_r) - e_r))
-    new_w = round(old_w + k_w * ((s_w * w_w) - e_w))
-    mid = db.get("next_match_id", 1); ts = int(time.time())
-    entry = {"match_id": mid,"timestamp": ts,"red_corner": red,"white_corner": white,"result": result,
-             "old_rating_red": old_r,"old_rating_white": old_w,"new_rating_red": new_r,"new_rating_white": new_w,
-             "change_red": new_r-old_r,"change_white": new_w-old_w}
-    db.setdefault("history", []).append(entry); db["next_match_id"]=mid+1
-    rr["rating"]=new_r; rw["rating"]=new_w
-    rr.setdefault("matches", []).append(entry); rw.setdefault("matches", []).append(entry)
-    save_db(wc, db)
+    entry, resolved_red, resolved_white = persist_judged_result(wc, red, white, result)
+    if entry is None:
+        flash("Robot not found", "error")
+        return redirect(url_for("index", wc=wc))
+    red = resolved_red or red
+    white = resolved_white or white
 
     if request.form.get("popFromSchedule") == "1":
         sched = load_schedule(); L = sched.get("list", [])
