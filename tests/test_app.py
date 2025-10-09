@@ -163,6 +163,45 @@ class AppRoutesTestCase(unittest.TestCase):
         self.assertEqual(entry["change_red"], 16)
         self.assertEqual(entry["change_white"], -16)
 
+    def test_submit_match_recovers_missing_next_match_id(self):
+        wc = bot_app.WEIGHT_CLASSES[0]
+        red = "Gamma"
+        white = "Delta"
+
+        db = storage.load_db(wc)
+        db["robots"][red] = {"rating": 1000, "matches": []}
+        db["robots"][white] = {"rating": 1000, "matches": []}
+        db["history"] = [
+            {"match_id": 2},
+            {"match_id": "not-a-number"},
+            {"match_id": 7},
+        ]
+        numeric_existing = []
+        for entry in db["history"]:
+            try:
+                numeric_existing.append(int(entry.get("match_id")))
+            except (TypeError, ValueError):
+                continue
+        existing_max = max(numeric_existing)
+        db.pop("next_match_id", None)
+        storage.save_db(wc, db)
+
+        response = self.client.post(
+            "/submit_match",
+            data={"wc": wc, "red": red, "white": white, "result": "Red wins JD"},
+        )
+        self.assertEqual(response.status_code, 302)
+
+        updated_db = storage.load_db(wc)
+        history = updated_db.get("history", [])
+        self.assertEqual(len(history), 4)
+        new_entry = history[-1]
+        new_id = new_entry.get("match_id")
+        self.assertIsInstance(new_id, int)
+        self.assertGreater(new_id, existing_max)
+        self.assertEqual(updated_db.get("next_match_id"), new_id + 1)
+        self.assertEqual(updated_db["robots"][red]["matches"][0]["match_id"], new_id)
+
 
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()

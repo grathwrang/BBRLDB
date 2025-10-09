@@ -205,7 +205,29 @@ def persist_judged_result(weight_class, red_name, white_name, judged_result):
         new_r = round(old_r + k_r * ((s_r * w_r) - e_r))
         new_w = round(old_w + k_w * ((s_w * w_w) - e_w))
 
-    mid = db.get("next_match_id", 1)
+    raw_history = db.get("history", [])
+    history = raw_history if isinstance(raw_history, list) else []
+
+    def _coerce_int(value):
+        if isinstance(value, bool):
+            return None
+        try:
+            return int(value)
+        except (TypeError, ValueError):
+            return None
+
+    numeric_ids = [
+        coerced
+        for coerced in (_coerce_int(entry.get("match_id")) for entry in history if isinstance(entry, dict))
+        if coerced is not None
+    ]
+    max_used_id = max(numeric_ids) if numeric_ids else 0
+
+    mid_candidate = _coerce_int(db.get("next_match_id"))
+    if mid_candidate is None or mid_candidate <= max_used_id:
+        mid = max_used_id + 1
+    else:
+        mid = mid_candidate
     ts = int(time.time())
     entry = {
         "match_id": mid,
