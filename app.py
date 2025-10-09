@@ -216,31 +216,12 @@ def persist_judged_result(weight_class, red_name, white_name, judged_result):
         except (TypeError, ValueError):
             return None
 
-    def _iter_numeric_match_ids(entries):
-        for entry in entries:
-            if not isinstance(entry, dict):
-                continue
-            coerced = _coerce_int(entry.get("match_id"))
-            if coerced is not None:
-                yield coerced
-
-    max_used_id = 0
-    for candidate in _iter_numeric_match_ids(history):
-        if candidate > max_used_id:
-            max_used_id = candidate
-
-    for other_wc in DB_FILES:
-        if other_wc == weight_class:
-            continue
-        try:
-            other_db = load_db(other_wc)
-        except Exception:
-            continue
-        other_history = other_db.get("history", [])
-        entries = other_history if isinstance(other_history, list) else []
-        for candidate in _iter_numeric_match_ids(entries):
-            if candidate > max_used_id:
-                max_used_id = candidate
+    numeric_ids = [
+        coerced
+        for coerced in (_coerce_int(entry.get("match_id")) for entry in history if isinstance(entry, dict))
+        if coerced is not None
+    ]
+    max_used_id = max(numeric_ids) if numeric_ids else 0
 
     mid_candidate = _coerce_int(db.get("next_match_id"))
     if mid_candidate is None or mid_candidate <= max_used_id:

@@ -202,48 +202,6 @@ class AppRoutesTestCase(unittest.TestCase):
         self.assertEqual(updated_db.get("next_match_id"), new_id + 1)
         self.assertEqual(updated_db["robots"][red]["matches"][0]["match_id"], new_id)
 
-    def test_submit_match_considers_all_weight_classes_for_next_id(self):
-        weight_classes = list(storage.DB_FILES.keys())
-        if len(weight_classes) < 2:
-            self.skipTest("requires multiple weight classes")
-
-        primary_wc = weight_classes[0]
-        other_wc = weight_classes[1]
-
-        other_db = storage.load_db(other_wc)
-        other_db.setdefault("history", []).extend([
-            {"match_id": 14},
-            {"match_id": "15"},
-            {"match_id": "junk"},
-            {"match_id": 29},
-        ])
-        storage.save_db(other_wc, other_db)
-
-        red = "Omega"
-        white = "Sigma"
-
-        db = storage.load_db(primary_wc)
-        db["robots"][red] = {"rating": 1000, "matches": []}
-        db["robots"][white] = {"rating": 1000, "matches": []}
-        db["history"] = [{"match_id": 3}]
-        db["next_match_id"] = 2
-        storage.save_db(primary_wc, db)
-
-        response = self.client.post(
-            "/submit_match",
-            data={"wc": primary_wc, "red": red, "white": white, "result": "Red wins JD"},
-        )
-        self.assertEqual(response.status_code, 302)
-
-        updated_db = storage.load_db(primary_wc)
-        history = updated_db.get("history", [])
-        self.assertEqual(len(history), 2)
-        new_entry = history[-1]
-        new_id = new_entry.get("match_id")
-        self.assertEqual(new_id, 30)
-        self.assertEqual(updated_db.get("next_match_id"), 31)
-        self.assertEqual(updated_db["robots"][red]["matches"][0]["match_id"], new_id)
-
 
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()
