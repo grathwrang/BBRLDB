@@ -14,6 +14,7 @@ DB_FILES = {
 SCHEDULE_FP = os.path.join(DATA_DIR, "schedule.json")
 JUDGING_FP = os.path.join(DATA_DIR, "judging.json")
 JUDGING_LOCK_FP = os.path.join(DATA_DIR, "judging.lock")
+TOURNAMENTS_FP = os.path.join(DATA_DIR, "tournaments.json")
 DEFAULT_RATING = 1000; DEFAULT_K = 32; KO_WEIGHT = 1.10
 def ensure_dirs(): os.makedirs(DATA_DIR, exist_ok=True)
 def _blank_db():
@@ -66,6 +67,46 @@ def save_schedule(sched):
     with os.fdopen(fd,"w",encoding="utf-8") as f:
         json.dump(sched,f,indent=2,ensure_ascii=False); f.flush(); os.fsync(f.fileno())
     os.replace(tmp, SCHEDULE_FP)
+
+
+def load_tournaments():
+    ensure_dirs()
+    if not os.path.exists(TOURNAMENTS_FP):
+        return {}
+    with open(TOURNAMENTS_FP, "r", encoding="utf-8") as f:
+        try:
+            data = json.load(f)
+        except Exception:
+            return {}
+    return data if isinstance(data, dict) else {}
+
+
+def save_tournaments(tournaments):
+    ensure_dirs()
+    fd, tmp = tempfile.mkstemp(prefix="._elo_tournaments_", dir=DATA_DIR)
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
+        json.dump(tournaments, f, indent=2, ensure_ascii=False)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, TOURNAMENTS_FP)
+
+
+def update_tournament(tournament_id: str, updater: Any):
+    ensure_dirs()
+    tournaments = load_tournaments()
+    current = tournaments.get(tournament_id, {})
+    if callable(updater):
+        updated = updater(dict(current))  # make a shallow copy for isolation
+        if updated is None:
+            updated = current
+    else:
+        updated = updater
+    if not isinstance(updated, dict):
+        raise ValueError("Tournament updates must produce a dictionary state")
+    updated.setdefault("id", tournament_id)
+    tournaments[tournament_id] = updated
+    save_tournaments(tournaments)
+    return updated
 
 def _blank_judging_state():
     return {

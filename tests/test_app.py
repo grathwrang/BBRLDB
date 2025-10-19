@@ -24,6 +24,7 @@ class AppRoutesTestCase(unittest.TestCase):
         patched_judging_fp = os.path.join(self._tempdir.name, "judging.json")
         patched_lock_fp = os.path.join(self._tempdir.name, "judging.lock")
         patched_schedule_fp = os.path.join(self._tempdir.name, "schedule.json")
+        patched_tournaments_fp = os.path.join(self._tempdir.name, "tournaments.json")
         patched_db_files = {
             wc: os.path.join(self._tempdir.name, f"{wc.lower()}_elo.json")
             for wc in storage.DB_FILES
@@ -35,6 +36,7 @@ class AppRoutesTestCase(unittest.TestCase):
             mock.patch.object(storage, "SCHEDULE_FP", patched_schedule_fp),
             mock.patch.object(storage, "JUDGING_FP", patched_judging_fp),
             mock.patch.object(storage, "JUDGING_LOCK_FP", patched_lock_fp),
+            mock.patch.object(storage, "TOURNAMENTS_FP", patched_tournaments_fp),
             mock.patch.object(storage, "DB_FILES", patched_db_files),
         ]
         for p in self._patches:
@@ -201,6 +203,49 @@ class AppRoutesTestCase(unittest.TestCase):
         self.assertGreater(new_id, existing_max)
         self.assertEqual(updated_db.get("next_match_id"), new_id + 1)
         self.assertEqual(updated_db["robots"][red]["matches"][0]["match_id"], new_id)
+
+    def test_tournament_creation_and_progression(self):
+        wc = bot_app.WEIGHT_CLASSES[0]
+        db = storage.load_db(wc)
+        db["robots"] = {
+            "Atlas": {"present": True},
+            "Blazer": {"present": True},
+            "Cyclone": {"present": True},
+            "Dynamo": {"present": True},
+        }
+        storage.save_db(wc, db)
+
+        create_resp = self.client.post(
+            "/tournaments/summer-showdown",
+            json={
+                "name": "Summer Showdown",
+                "weight_class": wc,
+                "elimination": "single",
+                "max_robots": 4,
+                "use_present": True,
+            },
+        )
+        self.assertEqual(create_resp.status_code, 200)
+        payload = create_resp.get_json()
+        self.assertEqual(payload["metadata"]["name"], "Summer Showdown")
+        self.assertEqual(set(payload["metadata"]["robots"]), {"Atlas", "Blazer", "Cyclone", "Dynamo"})
+
+        listing = self.client.get("/tournaments").get_json()
+        self.assertEqual(len(listing), 1)
+        first_match_id = payload["bracket"]["order"]["winners"][0][0]
+        first_match = payload["bracket"]["matches"][first_match_id]
+        chosen_winner = first_match["red"]
+
+        advance_resp = self.client.post(
+            f"/tournaments/summer-showdown/matches/{first_match_id}",
+            json={"winner": chosen_winner},
+        )
+        self.assertEqual(advance_resp.status_code, 200)
+        updated = advance_resp.get_json()
+        self.assertEqual(
+            updated["bracket"]["matches"][first_match_id]["winner"],
+            chosen_winner,
+        )
 
 
 if __name__ == "__main__":  # pragma: no cover

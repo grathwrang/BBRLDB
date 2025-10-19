@@ -15,6 +15,8 @@ from storage import (
     load_judging_state,
     save_judging_state,
     update_judging_state,
+    load_tournaments,
+    update_tournament,
 )
 from schedule_engine import generate
 from judging import (
@@ -26,6 +28,11 @@ from judging import (
     create_judge_record,
     matches_card,
     normalize_match,
+)
+from tournament_engine import (
+    seed_bracket,
+    serialize_bracket,
+    record_match_result,
 )
 
 UPLOAD_DIR = os.path.join(os.path.dirname(__file__), "static", "uploads")
@@ -128,6 +135,42 @@ def robot_display(weight_class, name):
         "ko_wins": stats.get("ko_wins", 0),
         "ko_losses": stats.get("ko_losses", 0),
     }
+
+
+def _tournament_payload(tid, record):
+    bracket_state = record.get("bracket") if isinstance(record, dict) else None
+    if isinstance(bracket_state, dict):
+        selected = list(bracket_state.get("selected", []))
+    else:
+        selected = list(record.get("robots", [])) if isinstance(record, dict) else []
+    return {
+        "id": tid,
+        "metadata": {
+            "name": (record or {}).get("name", tid),
+            "weight_class": (record or {}).get("weight_class"),
+            "elimination": (record or {}).get("elimination"),
+            "max_robots": (record or {}).get("max_robots"),
+            "robots": selected,
+            "updated_at": (record or {}).get("updated_at"),
+        },
+        "bracket": serialize_bracket(bracket_state) if bracket_state else None,
+    }
+
+
+def _determine_tournament_robots(weight_class, robots_override, use_present=True):
+    dbs = load_all()
+    class_db = dbs.get(weight_class, {}) if isinstance(dbs, dict) else {}
+    roster = class_db.get("robots", {}) if isinstance(class_db, dict) else {}
+    if robots_override:
+        ordered = []
+        for name in robots_override:
+            if name in roster:
+                if not use_present or roster[name].get("present"):
+                    ordered.append(name)
+        return ordered
+    if use_present:
+        return [name for name, info in roster.items() if info.get("present")]
+    return list(roster.keys())
 
 
 def _resolve_robot_record(robots, name):
@@ -1001,6 +1044,111 @@ def robot_card(wc, name):
         return "Not found", 404
     matches = sorted(info.get("matches", []), key=lambda m: m["timestamp"], reverse=True)[:50]
     return render_template("robot_card.html", wc=wc, name=actual_name, info=info, matches=matches)
+
+
+@app.get("/tournaments")
+def tournaments_index():
+    tournaments = load_tournaments()
+    payload = [_tournament_payload(tid, record) for tid, record in sorted(tournaments.items())]
+    return jsonify(payload)
+
+
+@app.get("/tournaments/<path:tid>")
+def tournament_detail(tid):
+    tournaments = load_tournaments()
+    record = tournaments.get(tid)
+    if not record:
+        return jsonify({"error": "not_found"}), 404
+    return jsonify(_tournament_payload(tid, record))
+
+
+@app.post("/tournaments/<path:tid>")
+def tournament_configure(tid):
+    payload = request.get_json(silent=True) or {}
+    name = payload.get("name") or tid
+    weight_class = payload.get("weight_class")
+    elimination = payload.get("elimination", "single")
+    use_present = payload.get("use_present", True)
+    robots_override = payload.get("robots")
+    max_robots = payload.get("max_robots")
+    try:
+        cap = int(max_robots)
+        if cap <= 0:
+            cap = None
+    except (TypeError, ValueError):
+        cap = None
+
+    if not weight_class or weight_class not in WEIGHT_CLASSES:
+        return jsonify({"error": "unknown_weight_class"}), 400
+
+    robots = _determine_tournament_robots(weight_class, robots_override, use_present)
+    if cap is not None and cap > 0:
+        robots = robots[:cap]
+    if len(robots) < 2:
+        return jsonify({"error": "insufficient_robots"}), 400
+
+    try:
+        bracket = seed_bracket(robots, elimination_type=elimination, max_robots=cap)
+    except ValueError as exc:
+        return jsonify({"error": "invalid_configuration", "details": str(exc)}), 400
+
+    timestamp = int(time.time())
+
+    def mutator(current):
+        state = dict(current or {})
+        state.update(
+            {
+                "id": tid,
+                "name": name,
+                "weight_class": weight_class,
+                "elimination": bracket.get("format", elimination),
+                "max_robots": cap,
+                "robots": list(bracket.get("selected", robots)),
+                "bracket": bracket,
+                "updated_at": timestamp,
+            }
+        )
+        return state
+
+    record = update_tournament(tid, mutator)
+    return jsonify(_tournament_payload(tid, record))
+
+
+@app.post("/tournaments/<path:tid>/matches/<path:match_id>")
+def tournament_progress_match(tid, match_id):
+    payload = request.get_json(silent=True) or {}
+    winner = payload.get("winner")
+    if not winner:
+        return jsonify({"error": "winner_required"}), 400
+
+    tournaments = load_tournaments()
+    record = tournaments.get(tid)
+    if not record:
+        return jsonify({"error": "not_found"}), 404
+
+    bracket = record.get("bracket")
+    if not isinstance(bracket, dict):
+        return jsonify({"error": "bracket_not_seeded"}), 400
+
+    try:
+        record_match_result(bracket, match_id, winner)
+    except KeyError:
+        return jsonify({"error": "unknown_match"}), 404
+    except ValueError as exc:
+        return jsonify({"error": "invalid_winner", "details": str(exc)}), 400
+
+    timestamp = int(time.time())
+
+    def mutator(current):
+        state = dict(current or {})
+        state["bracket"] = bracket
+        state["robots"] = list(bracket.get("selected", state.get("robots", [])))
+        state["elimination"] = bracket.get("format", state.get("elimination"))
+        state["updated_at"] = timestamp
+        return state
+
+    record = update_tournament(tid, mutator)
+    return jsonify(_tournament_payload(tid, record))
 
 
 if __name__ == "__main__":
