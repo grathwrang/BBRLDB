@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BotBrawl</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  {% block extra_head %}{% endblock %}
   <script src="{{ url_for('static', filename='app.js') }}"></script>
 </head>
 <body>
@@ -12,6 +13,10 @@
     <div class="top-tabs">
       <a href="{{ url_for('schedule_public') }}" class="{{ 'active' if request.path == '/SchedulePublic' else '' }}">Schedule</a>
       <a href="{{ url_for('rankings_public') }}" class="{{ 'active' if request.path == '/RankingsPublic' else '' }}">Rankings</a>
+      {% for t in PUBLIC_TOURNAMENTS %}
+        {%- set href = url_for('tournament_public', tournament_id=t.id) -%}
+        <a href="{{ href }}" class="{{ 'active' if request.path.startswith('/tournaments/public/' ~ t.id) else '' }}">{{ t.name }}</a>
+      {% endfor %}
     </div>
     {% block body %}{% endblock %}
     <dialog id="robotModal">
@@ -19,5 +24,6 @@
       <div class="modal-actions"><button class="modal-close" onclick="document.getElementById('robotModal').close()">Close</button></div>
     </dialog>
   </div>
+  {% block extra_scripts %}{% endblock %}
 </body>
 </html>

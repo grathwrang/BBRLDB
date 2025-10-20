@@ -14,8 +14,14 @@ DB_FILES = {
 SCHEDULE_FP = os.path.join(DATA_DIR, "schedule.json")
 JUDGING_FP = os.path.join(DATA_DIR, "judging.json")
 JUDGING_LOCK_FP = os.path.join(DATA_DIR, "judging.lock")
+TOURNAMENTS_DIR = os.path.join(DATA_DIR, "tournaments")
 DEFAULT_RATING = 1000; DEFAULT_K = 32; KO_WEIGHT = 1.10
 def ensure_dirs(): os.makedirs(DATA_DIR, exist_ok=True)
+
+
+def ensure_tournaments_dir():
+    ensure_dirs()
+    os.makedirs(TOURNAMENTS_DIR, exist_ok=True)
 def _blank_db():
     return {"robots": {}, "history": [], "next_match_id": 1, "settings": {"K": DEFAULT_K, "ko_weight": KO_WEIGHT}}
 def load_db(weight_class):
@@ -66,6 +72,59 @@ def save_schedule(sched):
     with os.fdopen(fd,"w",encoding="utf-8") as f:
         json.dump(sched,f,indent=2,ensure_ascii=False); f.flush(); os.fsync(f.fileno())
     os.replace(tmp, SCHEDULE_FP)
+
+
+def _load_json_file(fp, default=None):
+    if not os.path.exists(fp):
+        return default
+    with open(fp, "r", encoding="utf-8") as f:
+        try:
+            return json.load(f)
+        except Exception:
+            return default
+
+
+def list_tournaments():
+    ensure_tournaments_dir()
+    tournaments = []
+    for name in sorted(os.listdir(TOURNAMENTS_DIR)):
+        if not name.endswith(".json"):
+            continue
+        fp = os.path.join(TOURNAMENTS_DIR, name)
+        data = _load_json_file(fp, default=None)
+        if not isinstance(data, dict):
+            continue
+        tournament_id = data.get("id") or os.path.splitext(name)[0]
+        title = data.get("name") or tournament_id
+        format_ = data.get("format") or data.get("type")
+        tournaments.append(
+            {
+                "id": tournament_id,
+                "name": title,
+                "format": format_ or "single",
+                "slug": tournament_id,
+            }
+        )
+    return tournaments
+
+
+def load_tournament(tournament_id):
+    if not tournament_id:
+        return None
+    ensure_tournaments_dir()
+    safe_id = str(tournament_id).strip()
+    if not safe_id:
+        return None
+    filename = f"{safe_id}.json"
+    fp = os.path.join(TOURNAMENTS_DIR, filename)
+    data = _load_json_file(fp, default=None)
+    if not isinstance(data, dict):
+        return None
+    if "id" not in data:
+        data["id"] = safe_id
+    if "name" not in data:
+        data["name"] = safe_id
+    return data
 
 def _blank_judging_state():
     return {

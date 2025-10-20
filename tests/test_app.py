@@ -1,3 +1,4 @@
+import json
 import os
 import tempfile
 import unittest
@@ -24,6 +25,7 @@ class AppRoutesTestCase(unittest.TestCase):
         patched_judging_fp = os.path.join(self._tempdir.name, "judging.json")
         patched_lock_fp = os.path.join(self._tempdir.name, "judging.lock")
         patched_schedule_fp = os.path.join(self._tempdir.name, "schedule.json")
+        patched_tournaments_dir = os.path.join(self._tempdir.name, "tournaments")
         patched_db_files = {
             wc: os.path.join(self._tempdir.name, f"{wc.lower()}_elo.json")
             for wc in storage.DB_FILES
@@ -35,6 +37,7 @@ class AppRoutesTestCase(unittest.TestCase):
             mock.patch.object(storage, "SCHEDULE_FP", patched_schedule_fp),
             mock.patch.object(storage, "JUDGING_FP", patched_judging_fp),
             mock.patch.object(storage, "JUDGING_LOCK_FP", patched_lock_fp),
+            mock.patch.object(storage, "TOURNAMENTS_DIR", patched_tournaments_dir),
             mock.patch.object(storage, "DB_FILES", patched_db_files),
         ]
         for p in self._patches:
@@ -42,6 +45,24 @@ class AppRoutesTestCase(unittest.TestCase):
             self.addCleanup(p.stop)
 
         storage.ensure_dirs()
+
+    def _create_robot(self, wc, name, **attrs):
+        db = storage.load_db(wc)
+        robots = db.setdefault("robots", {})
+        robot = robots.setdefault(name, {"matches": []})
+        robot.update({
+            "rating": attrs.get("rating", 1200),
+            "driver_name": attrs.get("driver_name", "Test Driver"),
+            "team_name": attrs.get("team_name", "Test Team"),
+            "image": attrs.get("image", ""),
+        })
+        storage.save_db(wc, db)
+
+    def _write_tournament(self, tournament_id, payload):
+        storage.ensure_tournaments_dir()
+        path = os.path.join(storage.TOURNAMENTS_DIR, f"{tournament_id}.json")
+        with open(path, "w", encoding="utf-8") as fh:
+            json.dump(payload, fh)
 
     def test_robot_display_handles_invalid_weight_class(self):
         result = bot_app.robot_display("Unknown", "TestBot")
@@ -200,7 +221,85 @@ class AppRoutesTestCase(unittest.TestCase):
         self.assertIsInstance(new_id, int)
         self.assertGreater(new_id, existing_max)
         self.assertEqual(updated_db.get("next_match_id"), new_id + 1)
-        self.assertEqual(updated_db["robots"][red]["matches"][0]["match_id"], new_id)
+        self.assertEqual(updated_db["robots"][red]["matches"][-1]["match_id"], new_id)
+
+    def test_public_tournament_route_renders_bracket(self):
+        wc = bot_app.WEIGHT_CLASSES[0]
+        self._create_robot(wc, "Alpha", image="/static/uploads/alpha.png")
+        self._create_robot(wc, "Beta")
+
+        tournament_id = "ant-classic"
+        payload = {
+            "id": tournament_id,
+            "name": "Antweight Classic",
+            "weight_class": wc,
+            "format": "single",
+            "updated_at": 1700000000,
+            "rounds": [
+                {
+                    "name": "Quarterfinals",
+                    "matches": [
+                        {
+                            "id": "qf1",
+                            "slots": [
+                                {"seed": 1, "robot": "Alpha"},
+                                {"seed": 8, "robot": "Beta"},
+                            ],
+                        }
+                    ],
+                }
+            ],
+        }
+        self._write_tournament(tournament_id, payload)
+
+        response = self.client.get(f"/tournaments/public/{tournament_id}")
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"Antweight Classic", response.data)
+        self.assertIn(b"Alpha", response.data)
+        self.assertIn(b"#1", response.data)
+        self.assertIn(b"slot-photo-fallback", response.data)
+
+    def test_public_tournament_api_returns_enriched_data(self):
+        wc = bot_app.WEIGHT_CLASSES[0]
+        self._create_robot(wc, "Charlie", image="/static/uploads/charlie.png")
+        self._create_robot(wc, "Dana")
+
+        tournament_id = "summer-showdown"
+        payload = {
+            "id": tournament_id,
+            "name": "Summer Showdown",
+            "weight_class": wc,
+            "format": "double",
+            "brackets": [
+                {
+                    "key": "winners",
+                    "title": "Winners",
+                    "rounds": [
+                        {
+                            "name": "Semifinals",
+                            "matches": [
+                                {
+                                    "slots": [
+                                        {"seed": 1, "robot": "Charlie"},
+                                        {"seed": 2, "robot": "Dana"},
+                                    ]
+                                }
+                            ],
+                        }
+                    ],
+                }
+            ],
+        }
+        self._write_tournament(tournament_id, payload)
+
+        response = self.client.get(f"/api/tournaments/{tournament_id}")
+        self.assertEqual(response.status_code, 200)
+        data = response.get_json()
+        self.assertIn("meta", data)
+        self.assertEqual(data["meta"]["name"], "Summer Showdown")
+        slots = data["sections"][0]["rounds"][0]["matches"][0]["slots"]
+        self.assertEqual(slots[0]["robot_display"]["name"], "Charlie")
+        self.assertFalse(slots[1]["robot_display"]["image"])
 
 
 if __name__ == "__main__":  # pragma: no cover

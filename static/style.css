@@ -21,6 +21,7 @@
 body{margin:0;background:var(--bg);color:var(--text);font-family:Inter, 'Segoe UI', Roboto, Arial, sans-serif}
 .container{max-width:1400px;margin:0 auto;padding:8px 16px}
 .top-tabs{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #2a2e33}
+.top-tabs a + a{margin-left:0}
 .top-tabs a{padding:6px 10px;background:#181a1d;border:1px solid #2a2e33;border-bottom:none;border-radius:6px 6px 0 0;color:#cfd8dc;text-decoration:none}
 .top-tabs a.active{background:#1f2226;color:#fff}
 .page-title{font-family:'Bank Gothic','BankGothic Md BT',Michroma,'Eurostile','Square 721',sans-serif;font-size:48px;font-weight:800;text-align:center;color:var(--red);margin:12px 0 8px;text-transform:capitalize}
@@ -66,6 +67,7 @@ td.right,th.right{text-align:right}
 label{display:block;font-size:14px;color:#cfd8dc;margin-bottom:4px}
 input,select{width:100%;background:#0f1114;color:#fff;border:1px solid #2a2e33;border-radius:6px;padding:8px}
 .badge{display:inline-block;background:#1f2226;border:1px solid #2a2e33;color:#cfd8dc;border-radius:6px;padding:4px 8px}
+.badge-accent{background:rgba(229,57,53,0.18);color:#f2f2f2;border-color:rgba(229,57,53,0.35)}
 .status{color:#cfd8dc}
 hr.sep{border:0;border-top:1px solid #2a2e33;margin:12px 0}
 .sidebar-actions{display:flex;flex-direction:column;gap:10px}
@@ -73,6 +75,9 @@ hr.sep{border:0;border-top:1px solid #2a2e33;margin:12px 0}
 .dropzone{border:1px dashed #444;background:#17191c;color:#d0d0d0;border-radius:6px;height:220px;display:flex;align-items:center;justify-content:center;text-align:center}
 img.thumb{max-width:100%;max-height:220px;display:block;margin:auto}
 .small{font-size:12px;color:#aaa}
+.tournament-link-list{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+.tournament-link-list .link{color:#f5f5f5;text-decoration:underline}
+.tournament-link-list .link:hover,.tournament-link-list .link:focus{text-decoration:none}
 pre.overlay{white-space:pre-wrap;word-break:break-word;background:#0b0c0e;padding:12px;border:1px solid #2a2e33;border-radius:6px}
 
 
