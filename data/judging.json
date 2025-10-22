@@ -2,6 +2,3066 @@
   "current": null,
   "history": [
     {
+      "match_id": "8a354867c44241f889ef4605a7c1befa",
+      "weight_class": "Antweights",
+      "red": "Royal Reaper",
+      "white": "Pistol Shrimp",
+      "created_at": 1760750957,
+      "judges": {
+        "2": {
+          "judge_id": 2,
+          "submitted_at": 1760751332,
+          "judge_name": "Liz",
+          "sliders": {
+            "damage": 6,
+            "aggression": 2,
+            "control": 1
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 6,
+              "white": 2
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 2,
+              "white": 3
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 1,
+              "white": 5
+            }
+          },
+          "totals": {
+            "red": 9,
+            "white": 10
+          },
+          "winner": "white",
+          "scoreline": "9-10",
+          "breakdown": "Damage 6-2 · Aggression 2-3 · Control 1-5"
+        },
+        "3": {
+          "judge_id": 3,
+          "submitted_at": 1760751351,
+          "judge_name": "Chloe",
+          "sliders": {
+            "damage": 6,
+            "aggression": 2,
+            "control": 1
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 6,
+              "white": 2
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 2,
+              "white": 3
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 1,
+              "white": 5
+            }
+          },
+          "totals": {
+            "red": 9,
+            "white": 10
+          },
+          "winner": "white",
+          "scoreline": "9-10",
+          "breakdown": "Damage 6-2 · Aggression 2-3 · Control 1-5"
+        },
+        "1": {
+          "judge_id": 1,
+          "submitted_at": 1760751435,
+          "judge_name": "Doug Ireland",
+          "sliders": {
+            "damage": 6,
+            "aggression": 2,
+            "control": 2
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 6,
+              "white": 2
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 2,
+              "white": 3
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 2,
+              "white": 4
+            }
+          },
+          "totals": {
+            "red": 10,
+            "white": 9
+          },
+          "winner": "red",
+          "scoreline": "10-9",
+          "breakdown": "Damage 6-2 · Aggression 2-3 · Control 2-4"
+        }
+      },
+      "summary": {
+        "counts": {
+          "red": 1,
+          "white": 2,
+          "draw": 0
+        },
+        "winner": "white",
+        "winner_name": "Pistol Shrimp",
+        "decision": "split decision",
+        "scorecard_strings": [
+          "Judge 1: Royal Reaper 10-9 Pistol Shrimp",
+          "Judge 2: Royal Reaper 9-10 Pistol Shrimp",
+          "Judge 3: Royal Reaper 9-10 Pistol Shrimp"
+        ],
+        "pending_judges": [],
+        "is_complete": true,
+        "judge_cards": [
+          {
+            "judge_id": 1,
+            "submitted_at": 1760751435,
+            "judge_name": "Doug Ireland",
+            "sliders": {
+              "damage": 6,
+              "aggression": 2,
+              "control": 2
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 6,
+                "white": 2
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 2,
+                "white": 3
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 2,
+                "white": 4
+              }
+            },
+            "totals": {
+              "red": 10,
+              "white": 9
+            },
+            "winner": "red",
+            "scoreline": "10-9",
+            "breakdown": "Damage 6-2 · Aggression 2-3 · Control 2-4",
+            "winner_name": "Royal Reaper"
+          },
+          {
+            "judge_id": 2,
+            "submitted_at": 1760751332,
+            "judge_name": "Liz",
+            "sliders": {
+              "damage": 6,
+              "aggression": 2,
+              "control": 1
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 6,
+                "white": 2
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 2,
+                "white": 3
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 1,
+                "white": 5
+              }
+            },
+            "totals": {
+              "red": 9,
+              "white": 10
+            },
+            "winner": "white",
+            "scoreline": "9-10",
+            "breakdown": "Damage 6-2 · Aggression 2-3 · Control 1-5",
+            "winner_name": "Pistol Shrimp"
+          },
+          {
+            "judge_id": 3,
+            "submitted_at": 1760751351,
+            "judge_name": "Chloe",
+            "sliders": {
+              "damage": 6,
+              "aggression": 2,
+              "control": 1
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 6,
+                "white": 2
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 2,
+                "white": 3
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 1,
+                "white": 5
+              }
+            },
+            "totals": {
+              "red": 9,
+              "white": 10
+            },
+            "winner": "white",
+            "scoreline": "9-10",
+            "breakdown": "Damage 6-2 · Aggression 2-3 · Control 1-5",
+            "winner_name": "Pistol Shrimp"
+          }
+        ],
+        "headline": "Pistol Shrimp wins via split decision — Judge 1: Royal Reaper 10-9 Pistol Shrimp · Judge 2: Royal Reaper 9-10 Pistol Shrimp · Judge 3: Royal Reaper 9-10 Pistol Shrimp"
+      },
+      "completed_at": 1760751435
+    },
+    {
+      "match_id": "c3caba251d2a4708b2ae2e6c8537b405",
+      "weight_class": "Antweights",
+      "red": "Gearwig",
+      "white": "Fully Defined",
+      "created_at": 1760748357,
+      "judges": {
+        "3": {
+          "judge_id": 3,
+          "submitted_at": 1760748692,
+          "judge_name": "Chloe",
+          "sliders": {
+            "damage": 4,
+            "aggression": 4,
+            "control": 6
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 4,
+              "white": 4
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 4,
+              "white": 1
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 6,
+              "white": 0
+            }
+          },
+          "totals": {
+            "red": 14,
+            "white": 5
+          },
+          "winner": "red",
+          "scoreline": "14-5",
+          "breakdown": "Damage 4-4 · Aggression 4-1 · Control 6-0"
+        },
+        "2": {
+          "judge_id": 2,
+          "submitted_at": 1760748706,
+          "judge_name": "Liz",
+          "sliders": {
+            "damage": 5,
+            "aggression": 3,
+            "control": 4
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 5,
+              "white": 3
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 3,
+              "white": 2
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 4,
+              "white": 2
+            }
+          },
+          "totals": {
+            "red": 12,
+            "white": 7
+          },
+          "winner": "red",
+          "scoreline": "12-7",
+          "breakdown": "Damage 5-3 · Aggression 3-2 · Control 4-2"
+        },
+        "1": {
+          "judge_id": 1,
+          "submitted_at": 1760748727,
+          "judge_name": "Doug Ireland",
+          "sliders": {
+            "damage": 3,
+            "aggression": 4,
+            "control": 5
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 3,
+              "white": 5
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 4,
+              "white": 1
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 5,
+              "white": 1
+            }
+          },
+          "totals": {
+            "red": 12,
+            "white": 7
+          },
+          "winner": "red",
+          "scoreline": "12-7",
+          "breakdown": "Damage 3-5 · Aggression 4-1 · Control 5-1"
+        }
+      },
+      "summary": {
+        "counts": {
+          "red": 3,
+          "white": 0,
+          "draw": 0
+        },
+        "winner": "red",
+        "winner_name": "Gearwig",
+        "decision": "unanimous decision",
+        "scorecard_strings": [
+          "Judge 1: Gearwig 12-7 Fully Defined",
+          "Judge 2: Gearwig 12-7 Fully Defined",
+          "Judge 3: Gearwig 14-5 Fully Defined"
+        ],
+        "pending_judges": [],
+        "is_complete": true,
+        "judge_cards": [
+          {
+            "judge_id": 1,
+            "submitted_at": 1760748727,
+            "judge_name": "Doug Ireland",
+            "sliders": {
+              "damage": 3,
+              "aggression": 4,
+              "control": 5
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 3,
+                "white": 5
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 4,
+                "white": 1
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 5,
+                "white": 1
+              }
+            },
+            "totals": {
+              "red": 12,
+              "white": 7
+            },
+            "winner": "red",
+            "scoreline": "12-7",
+            "breakdown": "Damage 3-5 · Aggression 4-1 · Control 5-1",
+            "winner_name": "Gearwig"
+          },
+          {
+            "judge_id": 2,
+            "submitted_at": 1760748706,
+            "judge_name": "Liz",
+            "sliders": {
+              "damage": 5,
+              "aggression": 3,
+              "control": 4
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 5,
+                "white": 3
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 3,
+                "white": 2
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 4,
+                "white": 2
+              }
+            },
+            "totals": {
+              "red": 12,
+              "white": 7
+            },
+            "winner": "red",
+            "scoreline": "12-7",
+            "breakdown": "Damage 5-3 · Aggression 3-2 · Control 4-2",
+            "winner_name": "Gearwig"
+          },
+          {
+            "judge_id": 3,
+            "submitted_at": 1760748692,
+            "judge_name": "Chloe",
+            "sliders": {
+              "damage": 4,
+              "aggression": 4,
+              "control": 6
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 4,
+                "white": 4
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 4,
+                "white": 1
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 6,
+                "white": 0
+              }
+            },
+            "totals": {
+              "red": 14,
+              "white": 5
+            },
+            "winner": "red",
+            "scoreline": "14-5",
+            "breakdown": "Damage 4-4 · Aggression 4-1 · Control 6-0",
+            "winner_name": "Gearwig"
+          }
+        ],
+        "headline": "Gearwig wins via unanimous decision — Judge 1: Gearwig 12-7 Fully Defined · Judge 2: Gearwig 12-7 Fully Defined · Judge 3: Gearwig 14-5 Fully Defined"
+      },
+      "completed_at": 1760748727
+    },
+    {
+      "match_id": "bc41fb9f654345d3b693047e34fcfc9d",
+      "weight_class": "Antweights",
+      "red": "Tamarac",
+      "white": "Left Shoe Right Foot",
+      "created_at": 1760748042,
+      "judges": {
+        "3": {
+          "judge_id": 3,
+          "submitted_at": 1760748062,
+          "judge_name": "Chloe",
+          "sliders": {
+            "damage": 6,
+            "aggression": 4,
+            "control": 3
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 6,
+              "white": 2
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 4,
+              "white": 1
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 3,
+              "white": 3
+            }
+          },
+          "totals": {
+            "red": 13,
+            "white": 6
+          },
+          "winner": "red",
+          "scoreline": "13-6",
+          "breakdown": "Damage 6-2 · Aggression 4-1 · Control 3-3"
+        },
+        "2": {
+          "judge_id": 2,
+          "submitted_at": 1760748087,
+          "judge_name": "Liz",
+          "sliders": {
+            "damage": 6,
+            "aggression": 3,
+            "control": 5
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 6,
+              "white": 2
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 3,
+              "white": 2
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 5,
+              "white": 1
+            }
+          },
+          "totals": {
+            "red": 14,
+            "white": 5
+          },
+          "winner": "red",
+          "scoreline": "14-5",
+          "breakdown": "Damage 6-2 · Aggression 3-2 · Control 5-1"
+        },
+        "1": {
+          "judge_id": 1,
+          "submitted_at": 1760748128,
+          "judge_name": "Doug Ireland",
+          "sliders": {
+            "damage": 6,
+            "aggression": 4,
+            "control": 5
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 6,
+              "white": 2
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 4,
+              "white": 1
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 5,
+              "white": 1
+            }
+          },
+          "totals": {
+            "red": 15,
+            "white": 4
+          },
+          "winner": "red",
+          "scoreline": "15-4",
+          "breakdown": "Damage 6-2 · Aggression 4-1 · Control 5-1"
+        }
+      },
+      "summary": {
+        "counts": {
+          "red": 3,
+          "white": 0,
+          "draw": 0
+        },
+        "winner": "red",
+        "winner_name": "Tamarac",
+        "decision": "unanimous decision",
+        "scorecard_strings": [
+          "Judge 1: Tamarac 15-4 Left Shoe Right Foot",
+          "Judge 2: Tamarac 14-5 Left Shoe Right Foot",
+          "Judge 3: Tamarac 13-6 Left Shoe Right Foot"
+        ],
+        "pending_judges": [],
+        "is_complete": true,
+        "judge_cards": [
+          {
+            "judge_id": 1,
+            "submitted_at": 1760748128,
+            "judge_name": "Doug Ireland",
+            "sliders": {
+              "damage": 6,
+              "aggression": 4,
+              "control": 5
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 6,
+                "white": 2
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 4,
+                "white": 1
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 5,
+                "white": 1
+              }
+            },
+            "totals": {
+              "red": 15,
+              "white": 4
+            },
+            "winner": "red",
+            "scoreline": "15-4",
+            "breakdown": "Damage 6-2 · Aggression 4-1 · Control 5-1",
+            "winner_name": "Tamarac"
+          },
+          {
+            "judge_id": 2,
+            "submitted_at": 1760748087,
+            "judge_name": "Liz",
+            "sliders": {
+              "damage": 6,
+              "aggression": 3,
+              "control": 5
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 6,
+                "white": 2
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 3,
+                "white": 2
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 5,
+                "white": 1
+              }
+            },
+            "totals": {
+              "red": 14,
+              "white": 5
+            },
+            "winner": "red",
+            "scoreline": "14-5",
+            "breakdown": "Damage 6-2 · Aggression 3-2 · Control 5-1",
+            "winner_name": "Tamarac"
+          },
+          {
+            "judge_id": 3,
+            "submitted_at": 1760748062,
+            "judge_name": "Chloe",
+            "sliders": {
+              "damage": 6,
+              "aggression": 4,
+              "control": 3
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 6,
+                "white": 2
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 4,
+                "white": 1
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 3,
+                "white": 3
+              }
+            },
+            "totals": {
+              "red": 13,
+              "white": 6
+            },
+            "winner": "red",
+            "scoreline": "13-6",
+            "breakdown": "Damage 6-2 · Aggression 4-1 · Control 3-3",
+            "winner_name": "Tamarac"
+          }
+        ],
+        "headline": "Tamarac wins via unanimous decision — Judge 1: Tamarac 15-4 Left Shoe Right Foot · Judge 2: Tamarac 14-5 Left Shoe Right Foot · Judge 3: Tamarac 13-6 Left Shoe Right Foot"
+      },
+      "completed_at": 1760748128
+    },
+    {
+      "match_id": "279781cc709349d3ad787ab1efc97169",
+      "weight_class": "Beetleweights",
+      "red": "Anubis",
+      "white": "Rex",
+      "created_at": 1760744912,
+      "judges": {
+        "2": {
+          "judge_id": 2,
+          "submitted_at": 1760745220,
+          "judge_name": "Liz",
+          "sliders": {
+            "damage": 3,
+            "aggression": 4,
+            "control": 5
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 3,
+              "white": 5
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 4,
+              "white": 1
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 5,
+              "white": 1
+            }
+          },
+          "totals": {
+            "red": 12,
+            "white": 7
+          },
+          "winner": "red",
+          "scoreline": "12-7",
+          "breakdown": "Damage 3-5 · Aggression 4-1 · Control 5-1"
+        },
+        "3": {
+          "judge_id": 3,
+          "submitted_at": 1760745232,
+          "judge_name": "Chloe",
+          "sliders": {
+            "damage": 2,
+            "aggression": 4,
+            "control": 5
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 2,
+              "white": 6
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 4,
+              "white": 1
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 5,
+              "white": 1
+            }
+          },
+          "totals": {
+            "red": 11,
+            "white": 8
+          },
+          "winner": "red",
+          "scoreline": "11-8",
+          "breakdown": "Damage 2-6 · Aggression 4-1 · Control 5-1"
+        },
+        "1": {
+          "judge_id": 1,
+          "submitted_at": 1760745266,
+          "judge_name": "Doug Ireland",
+          "sliders": {
+            "damage": 3,
+            "aggression": 4,
+            "control": 6
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 3,
+              "white": 5
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 4,
+              "white": 1
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 6,
+              "white": 0
+            }
+          },
+          "totals": {
+            "red": 13,
+            "white": 6
+          },
+          "winner": "red",
+          "scoreline": "13-6",
+          "breakdown": "Damage 3-5 · Aggression 4-1 · Control 6-0"
+        }
+      },
+      "summary": {
+        "counts": {
+          "red": 3,
+          "white": 0,
+          "draw": 0
+        },
+        "winner": "red",
+        "winner_name": "Anubis",
+        "decision": "unanimous decision",
+        "scorecard_strings": [
+          "Judge 1: Anubis 13-6 Rex",
+          "Judge 2: Anubis 12-7 Rex",
+          "Judge 3: Anubis 11-8 Rex"
+        ],
+        "pending_judges": [],
+        "is_complete": true,
+        "judge_cards": [
+          {
+            "judge_id": 1,
+            "submitted_at": 1760745266,
+            "judge_name": "Doug Ireland",
+            "sliders": {
+              "damage": 3,
+              "aggression": 4,
+              "control": 6
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 3,
+                "white": 5
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 4,
+                "white": 1
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 6,
+                "white": 0
+              }
+            },
+            "totals": {
+              "red": 13,
+              "white": 6
+            },
+            "winner": "red",
+            "scoreline": "13-6",
+            "breakdown": "Damage 3-5 · Aggression 4-1 · Control 6-0",
+            "winner_name": "Anubis"
+          },
+          {
+            "judge_id": 2,
+            "submitted_at": 1760745220,
+            "judge_name": "Liz",
+            "sliders": {
+              "damage": 3,
+              "aggression": 4,
+              "control": 5
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 3,
+                "white": 5
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 4,
+                "white": 1
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 5,
+                "white": 1
+              }
+            },
+            "totals": {
+              "red": 12,
+              "white": 7
+            },
+            "winner": "red",
+            "scoreline": "12-7",
+            "breakdown": "Damage 3-5 · Aggression 4-1 · Control 5-1",
+            "winner_name": "Anubis"
+          },
+          {
+            "judge_id": 3,
+            "submitted_at": 1760745232,
+            "judge_name": "Chloe",
+            "sliders": {
+              "damage": 2,
+              "aggression": 4,
+              "control": 5
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 2,
+                "white": 6
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 4,
+                "white": 1
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 5,
+                "white": 1
+              }
+            },
+            "totals": {
+              "red": 11,
+              "white": 8
+            },
+            "winner": "red",
+            "scoreline": "11-8",
+            "breakdown": "Damage 2-6 · Aggression 4-1 · Control 5-1",
+            "winner_name": "Anubis"
+          }
+        ],
+        "headline": "Anubis wins via unanimous decision — Judge 1: Anubis 13-6 Rex · Judge 2: Anubis 12-7 Rex · Judge 3: Anubis 11-8 Rex"
+      },
+      "completed_at": 1760745266
+    },
+    {
+      "match_id": "4f7d297e8a2e48a9b52ce8ca1ca842d7",
+      "weight_class": "Antweights",
+      "red": "Gearwig",
+      "white": "Double Time",
+      "created_at": 1760744338,
+      "judges": {
+        "3": {
+          "judge_id": 3,
+          "submitted_at": 1760744564,
+          "judge_name": "Chloe",
+          "sliders": {
+            "damage": 4,
+            "aggression": 4,
+            "control": 6
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 4,
+              "white": 4
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 4,
+              "white": 1
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 6,
+              "white": 0
+            }
+          },
+          "totals": {
+            "red": 14,
+            "white": 5
+          },
+          "winner": "red",
+          "scoreline": "14-5",
+          "breakdown": "Damage 4-4 · Aggression 4-1 · Control 6-0"
+        },
+        "2": {
+          "judge_id": 2,
+          "submitted_at": 1760744611,
+          "judge_name": "Liz",
+          "sliders": {
+            "damage": 4,
+            "aggression": 3,
+            "control": 4
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 4,
+              "white": 4
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 3,
+              "white": 2
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 4,
+              "white": 2
+            }
+          },
+          "totals": {
+            "red": 11,
+            "white": 8
+          },
+          "winner": "red",
+          "scoreline": "11-8",
+          "breakdown": "Damage 4-4 · Aggression 3-2 · Control 4-2"
+        },
+        "1": {
+          "judge_id": 1,
+          "submitted_at": 1760744636,
+          "judge_name": "Doug Ireland",
+          "sliders": {
+            "damage": 4,
+            "aggression": 4,
+            "control": 4
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 4,
+              "white": 4
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 4,
+              "white": 1
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 4,
+              "white": 2
+            }
+          },
+          "totals": {
+            "red": 12,
+            "white": 7
+          },
+          "winner": "red",
+          "scoreline": "12-7",
+          "breakdown": "Damage 4-4 · Aggression 4-1 · Control 4-2"
+        }
+      },
+      "summary": {
+        "counts": {
+          "red": 3,
+          "white": 0,
+          "draw": 0
+        },
+        "winner": "red",
+        "winner_name": "Gearwig",
+        "decision": "unanimous decision",
+        "scorecard_strings": [
+          "Judge 1: Gearwig 12-7 Double Time",
+          "Judge 2: Gearwig 11-8 Double Time",
+          "Judge 3: Gearwig 14-5 Double Time"
+        ],
+        "pending_judges": [],
+        "is_complete": true,
+        "judge_cards": [
+          {
+            "judge_id": 1,
+            "submitted_at": 1760744636,
+            "judge_name": "Doug Ireland",
+            "sliders": {
+              "damage": 4,
+              "aggression": 4,
+              "control": 4
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 4,
+                "white": 4
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 4,
+                "white": 1
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 4,
+                "white": 2
+              }
+            },
+            "totals": {
+              "red": 12,
+              "white": 7
+            },
+            "winner": "red",
+            "scoreline": "12-7",
+            "breakdown": "Damage 4-4 · Aggression 4-1 · Control 4-2",
+            "winner_name": "Gearwig"
+          },
+          {
+            "judge_id": 2,
+            "submitted_at": 1760744611,
+            "judge_name": "Liz",
+            "sliders": {
+              "damage": 4,
+              "aggression": 3,
+              "control": 4
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 4,
+                "white": 4
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 3,
+                "white": 2
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 4,
+                "white": 2
+              }
+            },
+            "totals": {
+              "red": 11,
+              "white": 8
+            },
+            "winner": "red",
+            "scoreline": "11-8",
+            "breakdown": "Damage 4-4 · Aggression 3-2 · Control 4-2",
+            "winner_name": "Gearwig"
+          },
+          {
+            "judge_id": 3,
+            "submitted_at": 1760744564,
+            "judge_name": "Chloe",
+            "sliders": {
+              "damage": 4,
+              "aggression": 4,
+              "control": 6
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 4,
+                "white": 4
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 4,
+                "white": 1
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 6,
+                "white": 0
+              }
+            },
+            "totals": {
+              "red": 14,
+              "white": 5
+            },
+            "winner": "red",
+            "scoreline": "14-5",
+            "breakdown": "Damage 4-4 · Aggression 4-1 · Control 6-0",
+            "winner_name": "Gearwig"
+          }
+        ],
+        "headline": "Gearwig wins via unanimous decision — Judge 1: Gearwig 12-7 Double Time · Judge 2: Gearwig 11-8 Double Time · Judge 3: Gearwig 14-5 Double Time"
+      },
+      "completed_at": 1760744636
+    },
+    {
+      "match_id": "172601ef8afe4debbdf0bff35ff53320",
+      "weight_class": "Antweights",
+      "red": "Gearwig",
+      "white": "Sawshimi",
+      "created_at": 1760145600,
+      "judges": {
+        "1": {
+          "judge_id": 1,
+          "submitted_at": 1760145847,
+          "judge_name": "DougNen",
+          "sliders": {
+            "damage": 4,
+            "aggression": 3,
+            "control": 5
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 4,
+              "white": 4
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 3,
+              "white": 2
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 5,
+              "white": 1
+            }
+          },
+          "totals": {
+            "red": 12,
+            "white": 7
+          },
+          "winner": "red",
+          "scoreline": "12-7",
+          "breakdown": "Damage 4-4 · Aggression 3-2 · Control 5-1"
+        },
+        "3": {
+          "judge_id": 3,
+          "submitted_at": 1760145872,
+          "judge_name": "Chloe",
+          "sliders": {
+            "damage": 4,
+            "aggression": 3,
+            "control": 5
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 4,
+              "white": 4
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 3,
+              "white": 2
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 5,
+              "white": 1
+            }
+          },
+          "totals": {
+            "red": 12,
+            "white": 7
+          },
+          "winner": "red",
+          "scoreline": "12-7",
+          "breakdown": "Damage 4-4 · Aggression 3-2 · Control 5-1"
+        },
+        "2": {
+          "judge_id": 2,
+          "submitted_at": 1760145887,
+          "judge_name": "Liz",
+          "sliders": {
+            "damage": 4,
+            "aggression": 2,
+            "control": 5
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 4,
+              "white": 4
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 2,
+              "white": 3
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 5,
+              "white": 1
+            }
+          },
+          "totals": {
+            "red": 11,
+            "white": 8
+          },
+          "winner": "red",
+          "scoreline": "11-8",
+          "breakdown": "Damage 4-4 · Aggression 2-3 · Control 5-1"
+        }
+      },
+      "summary": {
+        "counts": {
+          "red": 3,
+          "white": 0,
+          "draw": 0
+        },
+        "winner": "red",
+        "winner_name": "Gearwig",
+        "decision": "unanimous decision",
+        "scorecard_strings": [
+          "Judge 1: Gearwig 12-7 Sawshimi",
+          "Judge 2: Gearwig 11-8 Sawshimi",
+          "Judge 3: Gearwig 12-7 Sawshimi"
+        ],
+        "pending_judges": [],
+        "is_complete": true,
+        "judge_cards": [
+          {
+            "judge_id": 1,
+            "submitted_at": 1760145847,
+            "judge_name": "DougNen",
+            "sliders": {
+              "damage": 4,
+              "aggression": 3,
+              "control": 5
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 4,
+                "white": 4
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 3,
+                "white": 2
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 5,
+                "white": 1
+              }
+            },
+            "totals": {
+              "red": 12,
+              "white": 7
+            },
+            "winner": "red",
+            "scoreline": "12-7",
+            "breakdown": "Damage 4-4 · Aggression 3-2 · Control 5-1",
+            "winner_name": "Gearwig"
+          },
+          {
+            "judge_id": 2,
+            "submitted_at": 1760145887,
+            "judge_name": "Liz",
+            "sliders": {
+              "damage": 4,
+              "aggression": 2,
+              "control": 5
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 4,
+                "white": 4
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 2,
+                "white": 3
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 5,
+                "white": 1
+              }
+            },
+            "totals": {
+              "red": 11,
+              "white": 8
+            },
+            "winner": "red",
+            "scoreline": "11-8",
+            "breakdown": "Damage 4-4 · Aggression 2-3 · Control 5-1",
+            "winner_name": "Gearwig"
+          },
+          {
+            "judge_id": 3,
+            "submitted_at": 1760145872,
+            "judge_name": "Chloe",
+            "sliders": {
+              "damage": 4,
+              "aggression": 3,
+              "control": 5
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 4,
+                "white": 4
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 3,
+                "white": 2
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 5,
+                "white": 1
+              }
+            },
+            "totals": {
+              "red": 12,
+              "white": 7
+            },
+            "winner": "red",
+            "scoreline": "12-7",
+            "breakdown": "Damage 4-4 · Aggression 3-2 · Control 5-1",
+            "winner_name": "Gearwig"
+          }
+        ],
+        "headline": "Gearwig wins via unanimous decision — Judge 1: Gearwig 12-7 Sawshimi · Judge 2: Gearwig 11-8 Sawshimi · Judge 3: Gearwig 12-7 Sawshimi"
+      },
+      "completed_at": 1760145887
+    },
+    {
+      "match_id": "c8109f20e35941f483e40c21f2d806eb",
+      "weight_class": "Beetleweights",
+      "red": "Anubis",
+      "white": "Charity Case",
+      "created_at": 1760144874,
+      "judges": {
+        "1": {
+          "judge_id": 1,
+          "submitted_at": 1760145253,
+          "judge_name": "DougNen",
+          "sliders": {
+            "damage": 5,
+            "aggression": 3,
+            "control": 2
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 5,
+              "white": 3
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 3,
+              "white": 2
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 2,
+              "white": 4
+            }
+          },
+          "totals": {
+            "red": 10,
+            "white": 9
+          },
+          "winner": "red",
+          "scoreline": "10-9",
+          "breakdown": "Damage 5-3 · Aggression 3-2 · Control 2-4"
+        },
+        "3": {
+          "judge_id": 3,
+          "submitted_at": 1760145276,
+          "judge_name": "Chloe",
+          "sliders": {
+            "damage": 5,
+            "aggression": 3,
+            "control": 3
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 5,
+              "white": 3
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 3,
+              "white": 2
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 3,
+              "white": 3
+            }
+          },
+          "totals": {
+            "red": 11,
+            "white": 8
+          },
+          "winner": "red",
+          "scoreline": "11-8",
+          "breakdown": "Damage 5-3 · Aggression 3-2 · Control 3-3"
+        },
+        "2": {
+          "judge_id": 2,
+          "submitted_at": 1760145286,
+          "judge_name": "Liz",
+          "sliders": {
+            "damage": 4,
+            "aggression": 4,
+            "control": 3
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 4,
+              "white": 4
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 4,
+              "white": 1
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 3,
+              "white": 3
+            }
+          },
+          "totals": {
+            "red": 11,
+            "white": 8
+          },
+          "winner": "red",
+          "scoreline": "11-8",
+          "breakdown": "Damage 4-4 · Aggression 4-1 · Control 3-3"
+        }
+      },
+      "summary": {
+        "counts": {
+          "red": 3,
+          "white": 0,
+          "draw": 0
+        },
+        "winner": "red",
+        "winner_name": "Anubis",
+        "decision": "unanimous decision",
+        "scorecard_strings": [
+          "Judge 1: Anubis 10-9 Charity Case",
+          "Judge 2: Anubis 11-8 Charity Case",
+          "Judge 3: Anubis 11-8 Charity Case"
+        ],
+        "pending_judges": [],
+        "is_complete": true,
+        "judge_cards": [
+          {
+            "judge_id": 1,
+            "submitted_at": 1760145253,
+            "judge_name": "DougNen",
+            "sliders": {
+              "damage": 5,
+              "aggression": 3,
+              "control": 2
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 5,
+                "white": 3
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 3,
+                "white": 2
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 2,
+                "white": 4
+              }
+            },
+            "totals": {
+              "red": 10,
+              "white": 9
+            },
+            "winner": "red",
+            "scoreline": "10-9",
+            "breakdown": "Damage 5-3 · Aggression 3-2 · Control 2-4",
+            "winner_name": "Anubis"
+          },
+          {
+            "judge_id": 2,
+            "submitted_at": 1760145286,
+            "judge_name": "Liz",
+            "sliders": {
+              "damage": 4,
+              "aggression": 4,
+              "control": 3
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 4,
+                "white": 4
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 4,
+                "white": 1
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 3,
+                "white": 3
+              }
+            },
+            "totals": {
+              "red": 11,
+              "white": 8
+            },
+            "winner": "red",
+            "scoreline": "11-8",
+            "breakdown": "Damage 4-4 · Aggression 4-1 · Control 3-3",
+            "winner_name": "Anubis"
+          },
+          {
+            "judge_id": 3,
+            "submitted_at": 1760145276,
+            "judge_name": "Chloe",
+            "sliders": {
+              "damage": 5,
+              "aggression": 3,
+              "control": 3
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 5,
+                "white": 3
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 3,
+                "white": 2
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 3,
+                "white": 3
+              }
+            },
+            "totals": {
+              "red": 11,
+              "white": 8
+            },
+            "winner": "red",
+            "scoreline": "11-8",
+            "breakdown": "Damage 5-3 · Aggression 3-2 · Control 3-3",
+            "winner_name": "Anubis"
+          }
+        ],
+        "headline": "Anubis wins via unanimous decision — Judge 1: Anubis 10-9 Charity Case · Judge 2: Anubis 11-8 Charity Case · Judge 3: Anubis 11-8 Charity Case"
+      },
+      "completed_at": 1760145286
+    },
+    {
+      "match_id": "cd5c32ccfc524f1584ccc0ff723e22d9",
+      "weight_class": "Antweights",
+      "red": "Left Shoe Right Foot",
+      "white": "Gearwig",
+      "created_at": 1760143139,
+      "judges": {
+        "1": {
+          "judge_id": 1,
+          "submitted_at": 1760143415,
+          "judge_name": "DougNen",
+          "sliders": {
+            "damage": 5,
+            "aggression": 3,
+            "control": 4
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 5,
+              "white": 3
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 3,
+              "white": 2
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 4,
+              "white": 2
+            }
+          },
+          "totals": {
+            "red": 12,
+            "white": 7
+          },
+          "winner": "red",
+          "scoreline": "12-7",
+          "breakdown": "Damage 5-3 · Aggression 3-2 · Control 4-2"
+        },
+        "3": {
+          "judge_id": 3,
+          "submitted_at": 1760143454,
+          "judge_name": "Chloe",
+          "sliders": {
+            "damage": 3,
+            "aggression": 4,
+            "control": 4
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 3,
+              "white": 5
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 4,
+              "white": 1
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 4,
+              "white": 2
+            }
+          },
+          "totals": {
+            "red": 11,
+            "white": 8
+          },
+          "winner": "red",
+          "scoreline": "11-8",
+          "breakdown": "Damage 3-5 · Aggression 4-1 · Control 4-2"
+        },
+        "2": {
+          "judge_id": 2,
+          "submitted_at": 1760143460,
+          "judge_name": "Liz",
+          "sliders": {
+            "damage": 3,
+            "aggression": 4,
+            "control": 3
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 3,
+              "white": 5
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 4,
+              "white": 1
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 3,
+              "white": 3
+            }
+          },
+          "totals": {
+            "red": 10,
+            "white": 9
+          },
+          "winner": "red",
+          "scoreline": "10-9",
+          "breakdown": "Damage 3-5 · Aggression 4-1 · Control 3-3"
+        }
+      },
+      "summary": {
+        "counts": {
+          "red": 3,
+          "white": 0,
+          "draw": 0
+        },
+        "winner": "red",
+        "winner_name": "Left Shoe Right Foot",
+        "decision": "unanimous decision",
+        "scorecard_strings": [
+          "Judge 1: Left Shoe Right Foot 12-7 Gearwig",
+          "Judge 2: Left Shoe Right Foot 10-9 Gearwig",
+          "Judge 3: Left Shoe Right Foot 11-8 Gearwig"
+        ],
+        "pending_judges": [],
+        "is_complete": true,
+        "judge_cards": [
+          {
+            "judge_id": 1,
+            "submitted_at": 1760143415,
+            "judge_name": "DougNen",
+            "sliders": {
+              "damage": 5,
+              "aggression": 3,
+              "control": 4
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 5,
+                "white": 3
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 3,
+                "white": 2
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 4,
+                "white": 2
+              }
+            },
+            "totals": {
+              "red": 12,
+              "white": 7
+            },
+            "winner": "red",
+            "scoreline": "12-7",
+            "breakdown": "Damage 5-3 · Aggression 3-2 · Control 4-2",
+            "winner_name": "Left Shoe Right Foot"
+          },
+          {
+            "judge_id": 2,
+            "submitted_at": 1760143460,
+            "judge_name": "Liz",
+            "sliders": {
+              "damage": 3,
+              "aggression": 4,
+              "control": 3
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 3,
+                "white": 5
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 4,
+                "white": 1
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 3,
+                "white": 3
+              }
+            },
+            "totals": {
+              "red": 10,
+              "white": 9
+            },
+            "winner": "red",
+            "scoreline": "10-9",
+            "breakdown": "Damage 3-5 · Aggression 4-1 · Control 3-3",
+            "winner_name": "Left Shoe Right Foot"
+          },
+          {
+            "judge_id": 3,
+            "submitted_at": 1760143454,
+            "judge_name": "Chloe",
+            "sliders": {
+              "damage": 3,
+              "aggression": 4,
+              "control": 4
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 3,
+                "white": 5
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 4,
+                "white": 1
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 4,
+                "white": 2
+              }
+            },
+            "totals": {
+              "red": 11,
+              "white": 8
+            },
+            "winner": "red",
+            "scoreline": "11-8",
+            "breakdown": "Damage 3-5 · Aggression 4-1 · Control 4-2",
+            "winner_name": "Left Shoe Right Foot"
+          }
+        ],
+        "headline": "Left Shoe Right Foot wins via unanimous decision — Judge 1: Left Shoe Right Foot 12-7 Gearwig · Judge 2: Left Shoe Right Foot 10-9 Gearwig · Judge 3: Left Shoe Right Foot 11-8 Gearwig"
+      },
+      "completed_at": 1760143460
+    },
+    {
+      "match_id": "31508a3cf7fd4ffcb0463d462a24b68e",
+      "weight_class": "Antweights",
+      "red": "Mini Vortex",
+      "white": "A. Pudding",
+      "created_at": 1760141932,
+      "judges": {
+        "1": {
+          "judge_id": 1,
+          "submitted_at": 1760142369,
+          "judge_name": "DougNen",
+          "sliders": {
+            "damage": 3,
+            "aggression": 1,
+            "control": 2
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 3,
+              "white": 5
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 1,
+              "white": 4
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 2,
+              "white": 4
+            }
+          },
+          "totals": {
+            "red": 6,
+            "white": 13
+          },
+          "winner": "white",
+          "scoreline": "6-13",
+          "breakdown": "Damage 3-5 · Aggression 1-4 · Control 2-4"
+        },
+        "3": {
+          "judge_id": 3,
+          "submitted_at": 1760142459,
+          "judge_name": "Chloe",
+          "sliders": {
+            "damage": 1,
+            "aggression": 2,
+            "control": 2
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 1,
+              "white": 7
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 2,
+              "white": 3
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 2,
+              "white": 4
+            }
+          },
+          "totals": {
+            "red": 5,
+            "white": 14
+          },
+          "winner": "white",
+          "scoreline": "5-14",
+          "breakdown": "Damage 1-7 · Aggression 2-3 · Control 2-4"
+        },
+        "2": {
+          "judge_id": 2,
+          "submitted_at": 1760142468,
+          "judge_name": "Liz",
+          "sliders": {
+            "damage": 2,
+            "aggression": 2,
+            "control": 3
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 2,
+              "white": 6
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 2,
+              "white": 3
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 3,
+              "white": 3
+            }
+          },
+          "totals": {
+            "red": 7,
+            "white": 12
+          },
+          "winner": "white",
+          "scoreline": "7-12",
+          "breakdown": "Damage 2-6 · Aggression 2-3 · Control 3-3"
+        }
+      },
+      "summary": {
+        "counts": {
+          "red": 0,
+          "white": 3,
+          "draw": 0
+        },
+        "winner": "white",
+        "winner_name": "A. Pudding",
+        "decision": "unanimous decision",
+        "scorecard_strings": [
+          "Judge 1: Mini Vortex 6-13 A. Pudding",
+          "Judge 2: Mini Vortex 7-12 A. Pudding",
+          "Judge 3: Mini Vortex 5-14 A. Pudding"
+        ],
+        "pending_judges": [],
+        "is_complete": true,
+        "judge_cards": [
+          {
+            "judge_id": 1,
+            "submitted_at": 1760142369,
+            "judge_name": "DougNen",
+            "sliders": {
+              "damage": 3,
+              "aggression": 1,
+              "control": 2
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 3,
+                "white": 5
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 1,
+                "white": 4
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 2,
+                "white": 4
+              }
+            },
+            "totals": {
+              "red": 6,
+              "white": 13
+            },
+            "winner": "white",
+            "scoreline": "6-13",
+            "breakdown": "Damage 3-5 · Aggression 1-4 · Control 2-4",
+            "winner_name": "A. Pudding"
+          },
+          {
+            "judge_id": 2,
+            "submitted_at": 1760142468,
+            "judge_name": "Liz",
+            "sliders": {
+              "damage": 2,
+              "aggression": 2,
+              "control": 3
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 2,
+                "white": 6
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 2,
+                "white": 3
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 3,
+                "white": 3
+              }
+            },
+            "totals": {
+              "red": 7,
+              "white": 12
+            },
+            "winner": "white",
+            "scoreline": "7-12",
+            "breakdown": "Damage 2-6 · Aggression 2-3 · Control 3-3",
+            "winner_name": "A. Pudding"
+          },
+          {
+            "judge_id": 3,
+            "submitted_at": 1760142459,
+            "judge_name": "Chloe",
+            "sliders": {
+              "damage": 1,
+              "aggression": 2,
+              "control": 2
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 1,
+                "white": 7
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 2,
+                "white": 3
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 2,
+                "white": 4
+              }
+            },
+            "totals": {
+              "red": 5,
+              "white": 14
+            },
+            "winner": "white",
+            "scoreline": "5-14",
+            "breakdown": "Damage 1-7 · Aggression 2-3 · Control 2-4",
+            "winner_name": "A. Pudding"
+          }
+        ],
+        "headline": "A. Pudding wins via unanimous decision — Judge 1: Mini Vortex 6-13 A. Pudding · Judge 2: Mini Vortex 7-12 A. Pudding · Judge 3: Mini Vortex 5-14 A. Pudding"
+      },
+      "completed_at": 1760142468
+    },
+    {
+      "match_id": "2e0766cf32b745f9ae10bca72310e379",
+      "weight_class": "Antweights",
+      "red": "Pistol Shrimp",
+      "white": "Left Shoe Right Foot",
+      "created_at": 1760141605,
+      "judges": {
+        "1": {
+          "judge_id": 1,
+          "submitted_at": 1760141917,
+          "judge_name": "DougNen",
+          "sliders": {
+            "damage": 2,
+            "aggression": 2,
+            "control": 2
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 2,
+              "white": 6
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 2,
+              "white": 3
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 2,
+              "white": 4
+            }
+          },
+          "totals": {
+            "red": 6,
+            "white": 13
+          },
+          "winner": "white",
+          "scoreline": "6-13",
+          "breakdown": "Damage 2-6 · Aggression 2-3 · Control 2-4"
+        },
+        "2": {
+          "judge_id": 2,
+          "submitted_at": 1760141919,
+          "judge_name": "Liz",
+          "sliders": {
+            "damage": 2,
+            "aggression": 2,
+            "control": 3
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 2,
+              "white": 6
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 2,
+              "white": 3
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 3,
+              "white": 3
+            }
+          },
+          "totals": {
+            "red": 7,
+            "white": 12
+          },
+          "winner": "white",
+          "scoreline": "7-12",
+          "breakdown": "Damage 2-6 · Aggression 2-3 · Control 3-3"
+        },
+        "3": {
+          "judge_id": 3,
+          "submitted_at": 1760141932,
+          "judge_name": "Chloe",
+          "sliders": {
+            "damage": 2,
+            "aggression": 2,
+            "control": 2
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 2,
+              "white": 6
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 2,
+              "white": 3
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 2,
+              "white": 4
+            }
+          },
+          "totals": {
+            "red": 6,
+            "white": 13
+          },
+          "winner": "white",
+          "scoreline": "6-13",
+          "breakdown": "Damage 2-6 · Aggression 2-3 · Control 2-4"
+        }
+      },
+      "summary": {
+        "counts": {
+          "red": 0,
+          "white": 3,
+          "draw": 0
+        },
+        "winner": "white",
+        "winner_name": "Left Shoe Right Foot",
+        "decision": "unanimous decision",
+        "scorecard_strings": [
+          "Judge 1: Pistol Shrimp 6-13 Left Shoe Right Foot",
+          "Judge 2: Pistol Shrimp 7-12 Left Shoe Right Foot",
+          "Judge 3: Pistol Shrimp 6-13 Left Shoe Right Foot"
+        ],
+        "pending_judges": [],
+        "is_complete": true,
+        "judge_cards": [
+          {
+            "judge_id": 1,
+            "submitted_at": 1760141917,
+            "judge_name": "DougNen",
+            "sliders": {
+              "damage": 2,
+              "aggression": 2,
+              "control": 2
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 2,
+                "white": 6
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 2,
+                "white": 3
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 2,
+                "white": 4
+              }
+            },
+            "totals": {
+              "red": 6,
+              "white": 13
+            },
+            "winner": "white",
+            "scoreline": "6-13",
+            "breakdown": "Damage 2-6 · Aggression 2-3 · Control 2-4",
+            "winner_name": "Left Shoe Right Foot"
+          },
+          {
+            "judge_id": 2,
+            "submitted_at": 1760141919,
+            "judge_name": "Liz",
+            "sliders": {
+              "damage": 2,
+              "aggression": 2,
+              "control": 3
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 2,
+                "white": 6
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 2,
+                "white": 3
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 3,
+                "white": 3
+              }
+            },
+            "totals": {
+              "red": 7,
+              "white": 12
+            },
+            "winner": "white",
+            "scoreline": "7-12",
+            "breakdown": "Damage 2-6 · Aggression 2-3 · Control 3-3",
+            "winner_name": "Left Shoe Right Foot"
+          },
+          {
+            "judge_id": 3,
+            "submitted_at": 1760141932,
+            "judge_name": "Chloe",
+            "sliders": {
+              "damage": 2,
+              "aggression": 2,
+              "control": 2
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 2,
+                "white": 6
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 2,
+                "white": 3
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 2,
+                "white": 4
+              }
+            },
+            "totals": {
+              "red": 6,
+              "white": 13
+            },
+            "winner": "white",
+            "scoreline": "6-13",
+            "breakdown": "Damage 2-6 · Aggression 2-3 · Control 2-4",
+            "winner_name": "Left Shoe Right Foot"
+          }
+        ],
+        "headline": "Left Shoe Right Foot wins via unanimous decision — Judge 1: Pistol Shrimp 6-13 Left Shoe Right Foot · Judge 2: Pistol Shrimp 7-12 Left Shoe Right Foot · Judge 3: Pistol Shrimp 6-13 Left Shoe Right Foot"
+      },
+      "completed_at": 1760141932
+    },
+    {
+      "match_id": "9ebf81dfde2d4db4b1af3ca5afa7e55f",
+      "weight_class": "Antweights",
+      "red": "A. Pudding",
+      "white": "Black Widow",
+      "created_at": 1760140621,
+      "judges": {
+        "1": {
+          "judge_id": 1,
+          "submitted_at": 1760140889,
+          "judge_name": "DougNen",
+          "sliders": {
+            "damage": 5,
+            "aggression": 3,
+            "control": 4
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 5,
+              "white": 3
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 3,
+              "white": 2
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 4,
+              "white": 2
+            }
+          },
+          "totals": {
+            "red": 12,
+            "white": 7
+          },
+          "winner": "red",
+          "scoreline": "12-7",
+          "breakdown": "Damage 5-3 · Aggression 3-2 · Control 4-2"
+        },
+        "3": {
+          "judge_id": 3,
+          "submitted_at": 1760140912,
+          "judge_name": "Chloe",
+          "sliders": {
+            "damage": 2,
+            "aggression": 1,
+            "control": 2
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 2,
+              "white": 6
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 1,
+              "white": 4
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 2,
+              "white": 4
+            }
+          },
+          "totals": {
+            "red": 5,
+            "white": 14
+          },
+          "winner": "white",
+          "scoreline": "5-14",
+          "breakdown": "Damage 2-6 · Aggression 1-4 · Control 2-4"
+        },
+        "2": {
+          "judge_id": 2,
+          "submitted_at": 1760140915,
+          "judge_name": "Liz",
+          "sliders": {
+            "damage": 6,
+            "aggression": 2,
+            "control": 4
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 6,
+              "white": 2
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 2,
+              "white": 3
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 4,
+              "white": 2
+            }
+          },
+          "totals": {
+            "red": 12,
+            "white": 7
+          },
+          "winner": "red",
+          "scoreline": "12-7",
+          "breakdown": "Damage 6-2 · Aggression 2-3 · Control 4-2"
+        }
+      },
+      "summary": {
+        "counts": {
+          "red": 2,
+          "white": 1,
+          "draw": 0
+        },
+        "winner": "red",
+        "winner_name": "A. Pudding",
+        "decision": "split decision",
+        "scorecard_strings": [
+          "Judge 1: A. Pudding 12-7 Black Widow",
+          "Judge 2: A. Pudding 12-7 Black Widow",
+          "Judge 3: A. Pudding 5-14 Black Widow"
+        ],
+        "pending_judges": [],
+        "is_complete": true,
+        "judge_cards": [
+          {
+            "judge_id": 1,
+            "submitted_at": 1760140889,
+            "judge_name": "DougNen",
+            "sliders": {
+              "damage": 5,
+              "aggression": 3,
+              "control": 4
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 5,
+                "white": 3
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 3,
+                "white": 2
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 4,
+                "white": 2
+              }
+            },
+            "totals": {
+              "red": 12,
+              "white": 7
+            },
+            "winner": "red",
+            "scoreline": "12-7",
+            "breakdown": "Damage 5-3 · Aggression 3-2 · Control 4-2",
+            "winner_name": "A. Pudding"
+          },
+          {
+            "judge_id": 2,
+            "submitted_at": 1760140915,
+            "judge_name": "Liz",
+            "sliders": {
+              "damage": 6,
+              "aggression": 2,
+              "control": 4
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 6,
+                "white": 2
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 2,
+                "white": 3
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 4,
+                "white": 2
+              }
+            },
+            "totals": {
+              "red": 12,
+              "white": 7
+            },
+            "winner": "red",
+            "scoreline": "12-7",
+            "breakdown": "Damage 6-2 · Aggression 2-3 · Control 4-2",
+            "winner_name": "A. Pudding"
+          },
+          {
+            "judge_id": 3,
+            "submitted_at": 1760140912,
+            "judge_name": "Chloe",
+            "sliders": {
+              "damage": 2,
+              "aggression": 1,
+              "control": 2
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 2,
+                "white": 6
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 1,
+                "white": 4
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 2,
+                "white": 4
+              }
+            },
+            "totals": {
+              "red": 5,
+              "white": 14
+            },
+            "winner": "white",
+            "scoreline": "5-14",
+            "breakdown": "Damage 2-6 · Aggression 1-4 · Control 2-4",
+            "winner_name": "Black Widow"
+          }
+        ],
+        "headline": "A. Pudding wins via split decision — Judge 1: A. Pudding 12-7 Black Widow · Judge 2: A. Pudding 12-7 Black Widow · Judge 3: A. Pudding 5-14 Black Widow"
+      },
+      "completed_at": 1760140915
+    },
+    {
+      "match_id": "079207cfcebf41c7add58aca5d6201b0",
+      "weight_class": "Antweights",
+      "red": "Gearwig",
+      "white": "Shredder",
+      "created_at": 1760130404,
+      "judges": {
+        "1": {
+          "judge_id": 1,
+          "submitted_at": 1760139435,
+          "judge_name": "DougNen",
+          "sliders": {
+            "damage": 4,
+            "aggression": 3,
+            "control": 6
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 4,
+              "white": 4
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 3,
+              "white": 2
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 6,
+              "white": 0
+            }
+          },
+          "totals": {
+            "red": 13,
+            "white": 6
+          },
+          "winner": "red",
+          "scoreline": "13-6",
+          "breakdown": "Damage 4-4 · Aggression 3-2 · Control 6-0"
+        },
+        "2": {
+          "judge_id": 2,
+          "submitted_at": 1760139444,
+          "judge_name": "Liz",
+          "sliders": {
+            "damage": 5,
+            "aggression": 3,
+            "control": 5
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 5,
+              "white": 3
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 3,
+              "white": 2
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 5,
+              "white": 1
+            }
+          },
+          "totals": {
+            "red": 13,
+            "white": 6
+          },
+          "winner": "red",
+          "scoreline": "13-6",
+          "breakdown": "Damage 5-3 · Aggression 3-2 · Control 5-1"
+        },
+        "3": {
+          "judge_id": 3,
+          "submitted_at": 1760139471,
+          "judge_name": "Chloe",
+          "sliders": {
+            "damage": 4,
+            "aggression": 4,
+            "control": 6
+          },
+          "scores": {
+            "damage": {
+              "label": "Damage",
+              "max": 8,
+              "red": 4,
+              "white": 4
+            },
+            "aggression": {
+              "label": "Aggression",
+              "max": 5,
+              "red": 4,
+              "white": 1
+            },
+            "control": {
+              "label": "Control",
+              "max": 6,
+              "red": 6,
+              "white": 0
+            }
+          },
+          "totals": {
+            "red": 14,
+            "white": 5
+          },
+          "winner": "red",
+          "scoreline": "14-5",
+          "breakdown": "Damage 4-4 · Aggression 4-1 · Control 6-0"
+        }
+      },
+      "summary": {
+        "counts": {
+          "red": 3,
+          "white": 0,
+          "draw": 0
+        },
+        "winner": "red",
+        "winner_name": "Gearwig",
+        "decision": "unanimous decision",
+        "scorecard_strings": [
+          "Judge 1: Gearwig 13-6 Shredder",
+          "Judge 2: Gearwig 13-6 Shredder",
+          "Judge 3: Gearwig 14-5 Shredder"
+        ],
+        "pending_judges": [],
+        "is_complete": true,
+        "judge_cards": [
+          {
+            "judge_id": 1,
+            "submitted_at": 1760139435,
+            "judge_name": "DougNen",
+            "sliders": {
+              "damage": 4,
+              "aggression": 3,
+              "control": 6
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 4,
+                "white": 4
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 3,
+                "white": 2
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 6,
+                "white": 0
+              }
+            },
+            "totals": {
+              "red": 13,
+              "white": 6
+            },
+            "winner": "red",
+            "scoreline": "13-6",
+            "breakdown": "Damage 4-4 · Aggression 3-2 · Control 6-0",
+            "winner_name": "Gearwig"
+          },
+          {
+            "judge_id": 2,
+            "submitted_at": 1760139444,
+            "judge_name": "Liz",
+            "sliders": {
+              "damage": 5,
+              "aggression": 3,
+              "control": 5
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 5,
+                "white": 3
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 3,
+                "white": 2
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 5,
+                "white": 1
+              }
+            },
+            "totals": {
+              "red": 13,
+              "white": 6
+            },
+            "winner": "red",
+            "scoreline": "13-6",
+            "breakdown": "Damage 5-3 · Aggression 3-2 · Control 5-1",
+            "winner_name": "Gearwig"
+          },
+          {
+            "judge_id": 3,
+            "submitted_at": 1760139471,
+            "judge_name": "Chloe",
+            "sliders": {
+              "damage": 4,
+              "aggression": 4,
+              "control": 6
+            },
+            "scores": {
+              "damage": {
+                "label": "Damage",
+                "max": 8,
+                "red": 4,
+                "white": 4
+              },
+              "aggression": {
+                "label": "Aggression",
+                "max": 5,
+                "red": 4,
+                "white": 1
+              },
+              "control": {
+                "label": "Control",
+                "max": 6,
+                "red": 6,
+                "white": 0
+              }
+            },
+            "totals": {
+              "red": 14,
+              "white": 5
+            },
+            "winner": "red",
+            "scoreline": "14-5",
+            "breakdown": "Damage 4-4 · Aggression 4-1 · Control 6-0",
+            "winner_name": "Gearwig"
+          }
+        ],
+        "headline": "Gearwig wins via unanimous decision — Judge 1: Gearwig 13-6 Shredder · Judge 2: Gearwig 13-6 Shredder · Judge 3: Gearwig 14-5 Shredder"
+      },
+      "completed_at": 1760139471
+    },
+    {
       "match_id": "c545645ceaee4604a016ab6d9377b06b",
       "weight_class": "Antweights",
       "red": "Left Shoe Right Foot",
@@ -2298,7 +5358,7 @@
     }
   ],
   "_meta": {
-    "version": 744,
-    "updated_at": 1759631938
+    "version": 1017,
+    "updated_at": 1760751435
   }
 }

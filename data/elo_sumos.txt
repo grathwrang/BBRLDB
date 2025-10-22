@@ -4,7 +4,7 @@
       "rating": 968,
       "matches": [
         {
-          "match_id": 3,
+          "match_id": 1,
           "timestamp": 1757721260,
           "red_corner": "Bort",
           "white_corner": "Whammo Can & Driveway Hero",
@@ -17,7 +17,7 @@
           "change_white": 18
         },
         {
-          "match_id": 9,
+          "match_id": 3,
           "timestamp": 1757723497,
           "red_corner": "Dispatchula",
           "white_corner": "Bort",
@@ -37,10 +37,10 @@
       "weight_class": "Sumos"
     },
     "Whammo Can & Driveway Hero": {
-      "rating": 1056,
+      "rating": 1034,
       "matches": [
         {
-          "match_id": 3,
+          "match_id": 1,
           "timestamp": 1757721260,
           "red_corner": "Bort",
           "white_corner": "Whammo Can & Driveway Hero",
@@ -53,7 +53,7 @@
           "change_white": 18
         },
         {
-          "match_id": 7,
+          "match_id": 2,
           "timestamp": 1757722669,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Dispatchula",
@@ -66,7 +66,7 @@
           "change_white": -15
         },
         {
-          "match_id": 13,
+          "match_id": 4,
           "timestamp": 1757725514,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Dispatchula",
@@ -79,7 +79,7 @@
           "change_white": -15
         },
         {
-          "match_id": 16,
+          "match_id": 5,
           "timestamp": 1758325505,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Alpacalypse",
@@ -92,7 +92,7 @@
           "change_white": -14
         },
         {
-          "match_id": 23,
+          "match_id": 8,
           "timestamp": 1758327740,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Homer",
@@ -105,7 +105,7 @@
           "change_white": 20
         },
         {
-          "match_id": 39,
+          "match_id": 14,
           "timestamp": 1758932210,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Dispatchula",
@@ -118,7 +118,7 @@
           "change_white": -13
         },
         {
-          "match_id": 45,
+          "match_id": 16,
           "timestamp": 1758933846,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Baguette",
@@ -131,7 +131,7 @@
           "change_white": -13
         },
         {
-          "match_id": 48,
+          "match_id": 17,
           "timestamp": 1758934970,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Judy",
@@ -144,7 +144,7 @@
           "change_white": -15
         },
         {
-          "match_id": 58,
+          "match_id": 22,
           "timestamp": 1759535375,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Alpacalypse",
@@ -157,7 +157,7 @@
           "change_white": -9
         },
         {
-          "match_id": 61,
+          "match_id": 25,
           "timestamp": 1759538334,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Cones of Dunshire",
@@ -170,7 +170,7 @@
           "change_white": -10
         },
         {
-          "match_id": 62,
+          "match_id": 26,
           "timestamp": 1759538567,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Homer",
@@ -183,7 +183,7 @@
           "change_white": 22
         },
         {
-          "match_id": 66,
+          "match_id": 30,
           "timestamp": 1759602982,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Alpacalypse",
@@ -196,7 +196,7 @@
           "change_white": 25
         },
         {
-          "match_id": 67,
+          "match_id": 31,
           "timestamp": 1759604477,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Judy",
@@ -207,19 +207,84 @@
           "new_rating_white": 1060,
           "change_red": -18,
           "change_white": 21
+        },
+        {
+          "match_id": 36,
+          "timestamp": 1760140049,
+          "red_corner": "Judy",
+          "white_corner": "Whammo Can & Driveway Hero",
+          "result": "White wins KO",
+          "old_rating_red": 1025,
+          "old_rating_white": 1056,
+          "new_rating_red": 1010,
+          "new_rating_white": 1074,
+          "change_red": -15,
+          "change_white": 18
+        },
+        {
+          "match_id": 39,
+          "timestamp": 1760142733,
+          "red_corner": "Dispatchula",
+          "white_corner": "Whammo Can & Driveway Hero",
+          "result": "Red wins KO",
+          "old_rating_red": 1091,
+          "old_rating_white": 1074,
+          "new_rating_red": 1109,
+          "new_rating_white": 1059,
+          "change_red": 18,
+          "change_white": -15
+        },
+        {
+          "match_id": 41,
+          "timestamp": 1760744912,
+          "red_corner": "Whammo Can & Driveway Hero",
+          "white_corner": "Cones of Dunshire",
+          "result": "Red wins KO",
+          "old_rating_red": 1059,
+          "old_rating_white": 917,
+          "new_rating_red": 1072,
+          "new_rating_white": 907,
+          "change_red": 13,
+          "change_white": -10
+        },
+        {
+          "match_id": 44,
+          "timestamp": 1760746749,
+          "red_corner": "Whammo Can & Driveway Hero",
+          "white_corner": "Homer",
+          "result": "White wins KO",
+          "old_rating_red": 1072,
+          "old_rating_white": 1012,
+          "new_rating_red": 1053,
+          "new_rating_white": 1034,
+          "change_red": -19,
+          "change_white": 22
+        },
+        {
+          "match_id": 48,
+          "timestamp": 1760749660,
+          "red_corner": "Alpacalypse",
+          "white_corner": "Whammo Can & Driveway Hero",
+          "result": "Red wins KO",
+          "old_rating_red": 994,
+          "old_rating_white": 1053,
+          "new_rating_red": 1016,
+          "new_rating_white": 1034,
+          "change_red": 22,
+          "change_white": -19
         }
       ],
       "image": "/static/uploads/1757918121341_Whammo_Can_and_Driveway_Hero_transp.png",
       "driver_name": "Garrett",
       "team_name": "Botshed Robotics",
-      "present": false,
+      "present": true,
       "weight_class": "Sumos"
     },
     "Dispatchula": {
-      "rating": 1072,
+      "rating": 1116,
       "matches": [
         {
-          "match_id": 7,
+          "match_id": 2,
           "timestamp": 1757722669,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Dispatchula",
@@ -232,7 +297,7 @@
           "change_white": -15
         },
         {
-          "match_id": 9,
+          "match_id": 3,
           "timestamp": 1757723497,
           "red_corner": "Dispatchula",
           "white_corner": "Bort",
@@ -245,7 +310,7 @@
           "change_white": -16
         },
         {
-          "match_id": 13,
+          "match_id": 4,
           "timestamp": 1757725514,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Dispatchula",
@@ -258,7 +323,7 @@
           "change_white": -15
         },
         {
-          "match_id": 18,
+          "match_id": 6,
           "timestamp": 1758326065,
           "red_corner": "Homer",
           "white_corner": "Dispatchula",
@@ -271,7 +336,7 @@
           "change_white": -15
         },
         {
-          "match_id": 20,
+          "match_id": 7,
           "timestamp": 1758326630,
           "red_corner": "Alpacalypse",
           "white_corner": "Dispatchula",
@@ -284,7 +349,7 @@
           "change_white": 18
         },
         {
-          "match_id": 28,
+          "match_id": 11,
           "timestamp": 1758329485,
           "red_corner": "Dispatchula",
           "white_corner": "Judy",
@@ -297,7 +362,7 @@
           "change_white": 16
         },
         {
-          "match_id": 39,
+          "match_id": 14,
           "timestamp": 1758932210,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Dispatchula",
@@ -310,7 +375,7 @@
           "change_white": -13
         },
         {
-          "match_id": 42,
+          "match_id": 15,
           "timestamp": 1758932980,
           "red_corner": "Alpacalypse",
           "white_corner": "Dispatchula",
@@ -323,7 +388,7 @@
           "change_white": 18
         },
         {
-          "match_id": 55,
+          "match_id": 19,
           "timestamp": 1758938304,
           "red_corner": "Baguette",
           "white_corner": "Dispatchula",
@@ -336,7 +401,7 @@
           "change_white": 17
         },
         {
-          "match_id": 59,
+          "match_id": 23,
           "timestamp": 1759536085,
           "red_corner": "Dispatchula",
           "white_corner": "Judy",
@@ -349,7 +414,7 @@
           "change_white": -19
         },
         {
-          "match_id": 63,
+          "match_id": 27,
           "timestamp": 1759539992,
           "red_corner": "Cones of Dunshire",
           "white_corner": "Dispatchula",
@@ -362,7 +427,7 @@
           "change_white": 16
         },
         {
-          "match_id": 69,
+          "match_id": 33,
           "timestamp": 1759605865,
           "red_corner": "Judy",
           "white_corner": "Dispatchula",
@@ -375,7 +440,7 @@
           "change_white": 19
         },
         {
-          "match_id": 70,
+          "match_id": 34,
           "timestamp": 1759606052,
           "red_corner": "Alpacalypse",
           "white_corner": "Dispatchula",
@@ -386,19 +451,84 @@
           "new_rating_white": 1072,
           "change_red": -14,
           "change_white": 17
+        },
+        {
+          "match_id": 37,
+          "timestamp": 1760140621,
+          "red_corner": "Dispatchula",
+          "white_corner": "Homer",
+          "result": "Red wins KO",
+          "old_rating_red": 1072,
+          "old_rating_white": 1060,
+          "new_rating_red": 1091,
+          "new_rating_white": 1045,
+          "change_red": 19,
+          "change_white": -15
+        },
+        {
+          "match_id": 39,
+          "timestamp": 1760142733,
+          "red_corner": "Dispatchula",
+          "white_corner": "Whammo Can & Driveway Hero",
+          "result": "Red wins KO",
+          "old_rating_red": 1091,
+          "old_rating_white": 1074,
+          "new_rating_red": 1109,
+          "new_rating_white": 1059,
+          "change_red": 18,
+          "change_white": -15
+        },
+        {
+          "match_id": 43,
+          "timestamp": 1760745872,
+          "red_corner": "Cones of Dunshire",
+          "white_corner": "Dispatchula",
+          "result": "White wins KO",
+          "old_rating_red": 907,
+          "old_rating_white": 1109,
+          "new_rating_red": 899,
+          "new_rating_white": 1120,
+          "change_red": -8,
+          "change_white": 11
+        },
+        {
+          "match_id": 45,
+          "timestamp": 1760746932,
+          "red_corner": "Alpacalypse",
+          "white_corner": "Dispatchula",
+          "result": "White wins KO",
+          "old_rating_red": 1021,
+          "old_rating_white": 1120,
+          "new_rating_red": 1009,
+          "new_rating_white": 1135,
+          "change_red": -12,
+          "change_white": 15
+        },
+        {
+          "match_id": 50,
+          "timestamp": 1760750779,
+          "red_corner": "Dispatchula",
+          "white_corner": "Judy",
+          "result": "White wins KO",
+          "old_rating_red": 1135,
+          "old_rating_white": 1062,
+          "new_rating_red": 1116,
+          "new_rating_white": 1085,
+          "change_red": -19,
+          "change_white": 23
         }
       ],
       "image": "/static/uploads/1757918047722_Dispatchula_transp.png",
       "driver_name": "Garrett",
       "team_name": "Botshed Robotics",
-      "present": false,
+      "present": true,
       "weight_class": "Sumos"
     },
     "Alpacalypse": {
-      "rating": 1018,
+      "rating": 1016,
       "matches": [
         {
-          "match_id": 16,
+          "match_id": 5,
           "timestamp": 1758325505,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Alpacalypse",
@@ -411,7 +541,7 @@
           "change_white": -14
         },
         {
-          "match_id": 20,
+          "match_id": 7,
           "timestamp": 1758326630,
           "red_corner": "Alpacalypse",
           "white_corner": "Dispatchula",
@@ -424,7 +554,7 @@
           "change_white": 18
         },
         {
-          "match_id": 25,
+          "match_id": 9,
           "timestamp": 1758328305,
           "red_corner": "Homer",
           "white_corner": "Alpacalypse",
@@ -437,7 +567,7 @@
           "change_white": 21
         },
         {
-          "match_id": 26,
+          "match_id": 10,
           "timestamp": 1758328760,
           "red_corner": "Alpacalypse",
           "white_corner": "Judy",
@@ -450,7 +580,7 @@
           "change_white": 17
         },
         {
-          "match_id": 42,
+          "match_id": 15,
           "timestamp": 1758932980,
           "red_corner": "Alpacalypse",
           "white_corner": "Dispatchula",
@@ -463,7 +593,7 @@
           "change_white": 18
         },
         {
-          "match_id": 52,
+          "match_id": 18,
           "timestamp": 1758936862,
           "red_corner": "Alpacalypse",
           "white_corner": "Judy",
@@ -476,7 +606,7 @@
           "change_white": 13
         },
         {
-          "match_id": 57,
+          "match_id": 21,
           "timestamp": 1759535022,
           "red_corner": "Alpacalypse",
           "white_corner": "Homer",
@@ -489,7 +619,7 @@
           "change_white": 16
         },
         {
-          "match_id": 58,
+          "match_id": 22,
           "timestamp": 1759535375,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Alpacalypse",
@@ -502,7 +632,7 @@
           "change_white": -9
         },
         {
-          "match_id": 60,
+          "match_id": 24,
           "timestamp": 1759537010,
           "red_corner": "Alpacalypse",
           "white_corner": "Cones of Dunshire",
@@ -515,7 +645,7 @@
           "change_white": -19
         },
         {
-          "match_id": 64,
+          "match_id": 28,
           "timestamp": 1759592813,
           "red_corner": "Judy",
           "white_corner": "Alpacalypse",
@@ -528,7 +658,7 @@
           "change_white": 24
         },
         {
-          "match_id": 66,
+          "match_id": 30,
           "timestamp": 1759602982,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Alpacalypse",
@@ -541,7 +671,7 @@
           "change_white": 25
         },
         {
-          "match_id": 68,
+          "match_id": 32,
           "timestamp": 1759604830,
           "red_corner": "Judy",
           "white_corner": "Alpacalypse",
@@ -554,7 +684,7 @@
           "change_white": 22
         },
         {
-          "match_id": 70,
+          "match_id": 34,
           "timestamp": 1759606052,
           "red_corner": "Alpacalypse",
           "white_corner": "Dispatchula",
@@ -567,7 +697,7 @@
           "change_white": 17
         },
         {
-          "match_id": 71,
+          "match_id": 35,
           "timestamp": 1759606381,
           "red_corner": "Alpacalypse",
           "white_corner": "Cones of Dunshire",
@@ -578,19 +708,84 @@
           "new_rating_white": 917,
           "change_red": 16,
           "change_white": -13
+        },
+        {
+          "match_id": 38,
+          "timestamp": 1760141605,
+          "red_corner": "Homer",
+          "white_corner": "Alpacalypse",
+          "result": "White wins KO",
+          "old_rating_red": 1045,
+          "old_rating_white": 1018,
+          "new_rating_red": 1028,
+          "new_rating_white": 1038,
+          "change_red": -17,
+          "change_white": 20
+        },
+        {
+          "match_id": 40,
+          "timestamp": 1760143139,
+          "red_corner": "Judy",
+          "white_corner": "Alpacalypse",
+          "result": "Red wins KO",
+          "old_rating_red": 1010,
+          "old_rating_white": 1038,
+          "new_rating_red": 1030,
+          "new_rating_white": 1021,
+          "change_red": 20,
+          "change_white": -17
+        },
+        {
+          "match_id": 45,
+          "timestamp": 1760746932,
+          "red_corner": "Alpacalypse",
+          "white_corner": "Dispatchula",
+          "result": "White wins KO",
+          "old_rating_red": 1021,
+          "old_rating_white": 1120,
+          "new_rating_red": 1009,
+          "new_rating_white": 1135,
+          "change_red": -12,
+          "change_white": 15
+        },
+        {
+          "match_id": 47,
+          "timestamp": 1760747624,
+          "red_corner": "Alpacalypse",
+          "white_corner": "Homer",
+          "result": "White wins KO",
+          "old_rating_red": 1009,
+          "old_rating_white": 1034,
+          "new_rating_red": 994,
+          "new_rating_white": 1052,
+          "change_red": -15,
+          "change_white": 18
+        },
+        {
+          "match_id": 48,
+          "timestamp": 1760749660,
+          "red_corner": "Alpacalypse",
+          "white_corner": "Whammo Can & Driveway Hero",
+          "result": "Red wins KO",
+          "old_rating_red": 994,
+          "old_rating_white": 1053,
+          "new_rating_red": 1016,
+          "new_rating_white": 1034,
+          "change_red": 22,
+          "change_white": -19
         }
       ],
       "image": "/static/uploads/1758307601827_cc5508ea-ce2c-4b4e-a90a-7dbb9d3eedd4.jpg",
       "driver_name": "Andrea",
       "team_name": "Andrea",
-      "present": false,
+      "present": true,
       "weight_class": "Sumos"
     },
     "Homer": {
-      "rating": 1060,
+      "rating": 1064,
       "matches": [
         {
-          "match_id": 18,
+          "match_id": 6,
           "timestamp": 1758326065,
           "red_corner": "Homer",
           "white_corner": "Dispatchula",
@@ -603,7 +798,7 @@
           "change_white": -15
         },
         {
-          "match_id": 23,
+          "match_id": 8,
           "timestamp": 1758327740,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Homer",
@@ -616,7 +811,7 @@
           "change_white": 20
         },
         {
-          "match_id": 25,
+          "match_id": 9,
           "timestamp": 1758328305,
           "red_corner": "Homer",
           "white_corner": "Alpacalypse",
@@ -629,7 +824,7 @@
           "change_white": 21
         },
         {
-          "match_id": 29,
+          "match_id": 12,
           "timestamp": 1758329908,
           "red_corner": "Judy",
           "white_corner": "Homer",
@@ -642,7 +837,7 @@
           "change_white": -15
         },
         {
-          "match_id": 56,
+          "match_id": 20,
           "timestamp": 1759534876,
           "red_corner": "Cones of Dunshire",
           "white_corner": "Homer",
@@ -655,7 +850,7 @@
           "change_white": 19
         },
         {
-          "match_id": 57,
+          "match_id": 21,
           "timestamp": 1759535022,
           "red_corner": "Alpacalypse",
           "white_corner": "Homer",
@@ -668,7 +863,7 @@
           "change_white": 16
         },
         {
-          "match_id": 62,
+          "match_id": 26,
           "timestamp": 1759538567,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Homer",
@@ -679,19 +874,97 @@
           "new_rating_white": 1060,
           "change_red": -22,
           "change_white": 22
+        },
+        {
+          "match_id": 37,
+          "timestamp": 1760140621,
+          "red_corner": "Dispatchula",
+          "white_corner": "Homer",
+          "result": "Red wins KO",
+          "old_rating_red": 1072,
+          "old_rating_white": 1060,
+          "new_rating_red": 1091,
+          "new_rating_white": 1045,
+          "change_red": 19,
+          "change_white": -15
+        },
+        {
+          "match_id": 38,
+          "timestamp": 1760141605,
+          "red_corner": "Homer",
+          "white_corner": "Alpacalypse",
+          "result": "White wins KO",
+          "old_rating_red": 1045,
+          "old_rating_white": 1018,
+          "new_rating_red": 1028,
+          "new_rating_white": 1038,
+          "change_red": -17,
+          "change_white": 20
+        },
+        {
+          "match_id": 42,
+          "timestamp": 1760745475,
+          "red_corner": "Judy",
+          "white_corner": "Homer",
+          "result": "Red wins KO",
+          "old_rating_red": 1030,
+          "old_rating_white": 1028,
+          "new_rating_red": 1049,
+          "new_rating_white": 1012,
+          "change_red": 19,
+          "change_white": -16
+        },
+        {
+          "match_id": 44,
+          "timestamp": 1760746749,
+          "red_corner": "Whammo Can & Driveway Hero",
+          "white_corner": "Homer",
+          "result": "White wins KO",
+          "old_rating_red": 1072,
+          "old_rating_white": 1012,
+          "new_rating_red": 1053,
+          "new_rating_white": 1034,
+          "change_red": -19,
+          "change_white": 22
+        },
+        {
+          "match_id": 47,
+          "timestamp": 1760747624,
+          "red_corner": "Alpacalypse",
+          "white_corner": "Homer",
+          "result": "White wins KO",
+          "old_rating_red": 1009,
+          "old_rating_white": 1034,
+          "new_rating_red": 994,
+          "new_rating_white": 1052,
+          "change_red": -15,
+          "change_white": 18
+        },
+        {
+          "match_id": 49,
+          "timestamp": 1760750341,
+          "red_corner": "Homer",
+          "white_corner": "Cones of Dunshire",
+          "result": "Red wins KO",
+          "old_rating_red": 1052,
+          "old_rating_white": 890,
+          "new_rating_red": 1064,
+          "new_rating_white": 881,
+          "change_red": 12,
+          "change_white": -9
         }
       ],
       "image": "/static/uploads/1757682172982_Homer.png",
       "driver_name": "Dan",
       "team_name": "Idle Hands",
-      "present": false,
+      "present": true,
       "weight_class": "Sumos"
     },
     "Judy": {
-      "rating": 1025,
+      "rating": 1085,
       "matches": [
         {
-          "match_id": 26,
+          "match_id": 10,
           "timestamp": 1758328760,
           "red_corner": "Alpacalypse",
           "white_corner": "Judy",
@@ -704,7 +977,7 @@
           "change_white": 17
         },
         {
-          "match_id": 28,
+          "match_id": 11,
           "timestamp": 1758329485,
           "red_corner": "Dispatchula",
           "white_corner": "Judy",
@@ -717,7 +990,7 @@
           "change_white": 16
         },
         {
-          "match_id": 29,
+          "match_id": 12,
           "timestamp": 1758329908,
           "red_corner": "Judy",
           "white_corner": "Homer",
@@ -730,7 +1003,7 @@
           "change_white": -15
         },
         {
-          "match_id": 35,
+          "match_id": 13,
           "timestamp": 1758931020,
           "red_corner": "Baguette",
           "white_corner": "Judy",
@@ -743,7 +1016,7 @@
           "change_white": 15
         },
         {
-          "match_id": 48,
+          "match_id": 17,
           "timestamp": 1758934970,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Judy",
@@ -756,7 +1029,7 @@
           "change_white": -15
         },
         {
-          "match_id": 52,
+          "match_id": 18,
           "timestamp": 1758936862,
           "red_corner": "Alpacalypse",
           "white_corner": "Judy",
@@ -769,7 +1042,7 @@
           "change_white": 13
         },
         {
-          "match_id": 59,
+          "match_id": 23,
           "timestamp": 1759536085,
           "red_corner": "Dispatchula",
           "white_corner": "Judy",
@@ -782,7 +1055,7 @@
           "change_white": -19
         },
         {
-          "match_id": 64,
+          "match_id": 28,
           "timestamp": 1759592813,
           "red_corner": "Judy",
           "white_corner": "Alpacalypse",
@@ -795,7 +1068,7 @@
           "change_white": 24
         },
         {
-          "match_id": 65,
+          "match_id": 29,
           "timestamp": 1759601980,
           "red_corner": "Cones of Dunshire",
           "white_corner": "Judy",
@@ -808,7 +1081,7 @@
           "change_white": 15
         },
         {
-          "match_id": 67,
+          "match_id": 31,
           "timestamp": 1759604477,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Judy",
@@ -821,7 +1094,7 @@
           "change_white": 21
         },
         {
-          "match_id": 68,
+          "match_id": 32,
           "timestamp": 1759604830,
           "red_corner": "Judy",
           "white_corner": "Alpacalypse",
@@ -834,7 +1107,7 @@
           "change_white": 22
         },
         {
-          "match_id": 69,
+          "match_id": 33,
           "timestamp": 1759605865,
           "red_corner": "Judy",
           "white_corner": "Dispatchula",
@@ -845,11 +1118,76 @@
           "new_rating_white": 1055,
           "change_red": -16,
           "change_white": 19
+        },
+        {
+          "match_id": 36,
+          "timestamp": 1760140049,
+          "red_corner": "Judy",
+          "white_corner": "Whammo Can & Driveway Hero",
+          "result": "White wins KO",
+          "old_rating_red": 1025,
+          "old_rating_white": 1056,
+          "new_rating_red": 1010,
+          "new_rating_white": 1074,
+          "change_red": -15,
+          "change_white": 18
+        },
+        {
+          "match_id": 40,
+          "timestamp": 1760143139,
+          "red_corner": "Judy",
+          "white_corner": "Alpacalypse",
+          "result": "Red wins KO",
+          "old_rating_red": 1010,
+          "old_rating_white": 1038,
+          "new_rating_red": 1030,
+          "new_rating_white": 1021,
+          "change_red": 20,
+          "change_white": -17
+        },
+        {
+          "match_id": 42,
+          "timestamp": 1760745475,
+          "red_corner": "Judy",
+          "white_corner": "Homer",
+          "result": "Red wins KO",
+          "old_rating_red": 1030,
+          "old_rating_white": 1028,
+          "new_rating_red": 1049,
+          "new_rating_white": 1012,
+          "change_red": 19,
+          "change_white": -16
+        },
+        {
+          "match_id": 46,
+          "timestamp": 1760747107,
+          "red_corner": "Judy",
+          "white_corner": "Cones of Dunshire",
+          "result": "Red wins KO",
+          "old_rating_red": 1049,
+          "old_rating_white": 899,
+          "new_rating_red": 1062,
+          "new_rating_white": 890,
+          "change_red": 13,
+          "change_white": -9
+        },
+        {
+          "match_id": 50,
+          "timestamp": 1760750779,
+          "red_corner": "Dispatchula",
+          "white_corner": "Judy",
+          "result": "White wins KO",
+          "old_rating_red": 1135,
+          "old_rating_white": 1062,
+          "new_rating_red": 1116,
+          "new_rating_white": 1085,
+          "change_red": -19,
+          "change_white": 23
         }
       ],
       "driver_name": "",
       "team_name": "",
-      "present": false,
+      "present": true,
       "weight_class": "Sumos",
       "image": "/static/uploads/1759476901816_Judy_transp.png"
     },
@@ -857,7 +1195,7 @@
       "rating": 957,
       "matches": [
         {
-          "match_id": 35,
+          "match_id": 13,
           "timestamp": 1758931020,
           "red_corner": "Baguette",
           "white_corner": "Judy",
@@ -870,7 +1208,7 @@
           "change_white": 15
         },
         {
-          "match_id": 45,
+          "match_id": 16,
           "timestamp": 1758933846,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Baguette",
@@ -883,7 +1221,7 @@
           "change_white": -13
         },
         {
-          "match_id": 55,
+          "match_id": 19,
           "timestamp": 1758938304,
           "red_corner": "Baguette",
           "white_corner": "Dispatchula",
@@ -902,10 +1240,10 @@
       "weight_class": "Sumos"
     },
     "Cones of Dunshire": {
-      "rating": 917,
+      "rating": 881,
       "matches": [
         {
-          "match_id": 56,
+          "match_id": 20,
           "timestamp": 1759534876,
           "red_corner": "Cones of Dunshire",
           "white_corner": "Homer",
@@ -918,7 +1256,7 @@
           "change_white": 19
         },
         {
-          "match_id": 60,
+          "match_id": 24,
           "timestamp": 1759537010,
           "red_corner": "Alpacalypse",
           "white_corner": "Cones of Dunshire",
@@ -931,7 +1269,7 @@
           "change_white": -19
         },
         {
-          "match_id": 61,
+          "match_id": 25,
           "timestamp": 1759538334,
           "red_corner": "Whammo Can & Driveway Hero",
           "white_corner": "Cones of Dunshire",
@@ -944,7 +1282,7 @@
           "change_white": -10
         },
         {
-          "match_id": 63,
+          "match_id": 27,
           "timestamp": 1759539992,
           "red_corner": "Cones of Dunshire",
           "white_corner": "Dispatchula",
@@ -957,7 +1295,7 @@
           "change_white": 16
         },
         {
-          "match_id": 65,
+          "match_id": 29,
           "timestamp": 1759601980,
           "red_corner": "Cones of Dunshire",
           "white_corner": "Judy",
@@ -970,7 +1308,7 @@
           "change_white": 15
         },
         {
-          "match_id": 71,
+          "match_id": 35,
           "timestamp": 1759606381,
           "red_corner": "Alpacalypse",
           "white_corner": "Cones of Dunshire",
@@ -981,18 +1319,70 @@
           "new_rating_white": 917,
           "change_red": 16,
           "change_white": -13
+        },
+        {
+          "match_id": 41,
+          "timestamp": 1760744912,
+          "red_corner": "Whammo Can & Driveway Hero",
+          "white_corner": "Cones of Dunshire",
+          "result": "Red wins KO",
+          "old_rating_red": 1059,
+          "old_rating_white": 917,
+          "new_rating_red": 1072,
+          "new_rating_white": 907,
+          "change_red": 13,
+          "change_white": -10
+        },
+        {
+          "match_id": 43,
+          "timestamp": 1760745872,
+          "red_corner": "Cones of Dunshire",
+          "white_corner": "Dispatchula",
+          "result": "White wins KO",
+          "old_rating_red": 907,
+          "old_rating_white": 1109,
+          "new_rating_red": 899,
+          "new_rating_white": 1120,
+          "change_red": -8,
+          "change_white": 11
+        },
+        {
+          "match_id": 46,
+          "timestamp": 1760747107,
+          "red_corner": "Judy",
+          "white_corner": "Cones of Dunshire",
+          "result": "Red wins KO",
+          "old_rating_red": 1049,
+          "old_rating_white": 899,
+          "new_rating_red": 1062,
+          "new_rating_white": 890,
+          "change_red": 13,
+          "change_white": -9
+        },
+        {
+          "match_id": 49,
+          "timestamp": 1760750341,
+          "red_corner": "Homer",
+          "white_corner": "Cones of Dunshire",
+          "result": "Red wins KO",
+          "old_rating_red": 1052,
+          "old_rating_white": 890,
+          "new_rating_red": 1064,
+          "new_rating_white": 881,
+          "change_red": 12,
+          "change_white": -9
         }
       ],
       "driver_name": "Kai",
       "team_name": "Team Crab",
-      "present": false,
+      "present": true,
       "weight_class": "Sumos",
       "image": "/static/uploads/1759794693759_conesofdunshiretransp.png"
     }
   },
   "history": [
     {
-      "match_id": 3,
+      "match_id": 1,
       "timestamp": 1757721260,
       "red_corner": "Bort",
       "white_corner": "Whammo Can & Driveway Hero",
@@ -1005,7 +1395,7 @@
       "change_white": 18
     },
     {
-      "match_id": 7,
+      "match_id": 2,
       "timestamp": 1757722669,
       "red_corner": "Whammo Can & Driveway Hero",
       "white_corner": "Dispatchula",
@@ -1018,7 +1408,7 @@
       "change_white": -15
     },
     {
-      "match_id": 9,
+      "match_id": 3,
       "timestamp": 1757723497,
       "red_corner": "Dispatchula",
       "white_corner": "Bort",
@@ -1031,7 +1421,7 @@
       "change_white": -16
     },
     {
-      "match_id": 13,
+      "match_id": 4,
       "timestamp": 1757725514,
       "red_corner": "Whammo Can & Driveway Hero",
       "white_corner": "Dispatchula",
@@ -1044,7 +1434,7 @@
       "change_white": -15
     },
     {
-      "match_id": 16,
+      "match_id": 5,
       "timestamp": 1758325505,
       "red_corner": "Whammo Can & Driveway Hero",
       "white_corner": "Alpacalypse",
@@ -1057,7 +1447,7 @@
       "change_white": -14
     },
     {
-      "match_id": 18,
+      "match_id": 6,
       "timestamp": 1758326065,
       "red_corner": "Homer",
       "white_corner": "Dispatchula",
@@ -1070,7 +1460,7 @@
       "change_white": -15
     },
     {
-      "match_id": 20,
+      "match_id": 7,
       "timestamp": 1758326630,
       "red_corner": "Alpacalypse",
       "white_corner": "Dispatchula",
@@ -1083,7 +1473,7 @@
       "change_white": 18
     },
     {
-      "match_id": 23,
+      "match_id": 8,
       "timestamp": 1758327740,
       "red_corner": "Whammo Can & Driveway Hero",
       "white_corner": "Homer",
@@ -1096,7 +1486,7 @@
       "change_white": 20
     },
     {
-      "match_id": 25,
+      "match_id": 9,
       "timestamp": 1758328305,
       "red_corner": "Homer",
       "white_corner": "Alpacalypse",
@@ -1109,7 +1499,7 @@
       "change_white": 21
     },
     {
-      "match_id": 26,
+      "match_id": 10,
       "timestamp": 1758328760,
       "red_corner": "Alpacalypse",
       "white_corner": "Judy",
@@ -1122,7 +1512,7 @@
       "change_white": 17
     },
     {
-      "match_id": 28,
+      "match_id": 11,
       "timestamp": 1758329485,
       "red_corner": "Dispatchula",
       "white_corner": "Judy",
@@ -1135,7 +1525,7 @@
       "change_white": 16
     },
     {
-      "match_id": 29,
+      "match_id": 12,
       "timestamp": 1758329908,
       "red_corner": "Judy",
       "white_corner": "Homer",
@@ -1148,7 +1538,7 @@
       "change_white": -15
     },
     {
-      "match_id": 35,
+      "match_id": 13,
       "timestamp": 1758931020,
       "red_corner": "Baguette",
       "white_corner": "Judy",
@@ -1161,7 +1551,7 @@
       "change_white": 15
     },
     {
-      "match_id": 39,
+      "match_id": 14,
       "timestamp": 1758932210,
       "red_corner": "Whammo Can & Driveway Hero",
       "white_corner": "Dispatchula",
@@ -1174,7 +1564,7 @@
       "change_white": -13
     },
     {
-      "match_id": 42,
+      "match_id": 15,
       "timestamp": 1758932980,
       "red_corner": "Alpacalypse",
       "white_corner": "Dispatchula",
@@ -1187,7 +1577,7 @@
       "change_white": 18
     },
     {
-      "match_id": 45,
+      "match_id": 16,
       "timestamp": 1758933846,
       "red_corner": "Whammo Can & Driveway Hero",
       "white_corner": "Baguette",
@@ -1200,7 +1590,7 @@
       "change_white": -13
     },
     {
-      "match_id": 48,
+      "match_id": 17,
       "timestamp": 1758934970,
       "red_corner": "Whammo Can & Driveway Hero",
       "white_corner": "Judy",
@@ -1213,7 +1603,7 @@
       "change_white": -15
     },
     {
-      "match_id": 52,
+      "match_id": 18,
       "timestamp": 1758936862,
       "red_corner": "Alpacalypse",
       "white_corner": "Judy",
@@ -1226,7 +1616,7 @@
       "change_white": 13
     },
     {
-      "match_id": 55,
+      "match_id": 19,
       "timestamp": 1758938304,
       "red_corner": "Baguette",
       "white_corner": "Dispatchula",
@@ -1239,7 +1629,7 @@
       "change_white": 17
     },
     {
-      "match_id": 56,
+      "match_id": 20,
       "timestamp": 1759534876,
       "red_corner": "Cones of Dunshire",
       "white_corner": "Homer",
@@ -1252,7 +1642,7 @@
       "change_white": 19
     },
     {
-      "match_id": 57,
+      "match_id": 21,
       "timestamp": 1759535022,
       "red_corner": "Alpacalypse",
       "white_corner": "Homer",
@@ -1265,7 +1655,7 @@
       "change_white": 16
     },
     {
-      "match_id": 58,
+      "match_id": 22,
       "timestamp": 1759535375,
       "red_corner": "Whammo Can & Driveway Hero",
       "white_corner": "Alpacalypse",
@@ -1278,7 +1668,7 @@
       "change_white": -9
     },
     {
-      "match_id": 59,
+      "match_id": 23,
       "timestamp": 1759536085,
       "red_corner": "Dispatchula",
       "white_corner": "Judy",
@@ -1291,7 +1681,7 @@
       "change_white": -19
     },
     {
-      "match_id": 60,
+      "match_id": 24,
       "timestamp": 1759537010,
       "red_corner": "Alpacalypse",
       "white_corner": "Cones of Dunshire",
@@ -1304,7 +1694,7 @@
       "change_white": -19
     },
     {
-      "match_id": 61,
+      "match_id": 25,
       "timestamp": 1759538334,
       "red_corner": "Whammo Can & Driveway Hero",
       "white_corner": "Cones of Dunshire",
@@ -1317,7 +1707,7 @@
       "change_white": -10
     },
     {
-      "match_id": 62,
+      "match_id": 26,
       "timestamp": 1759538567,
       "red_corner": "Whammo Can & Driveway Hero",
       "white_corner": "Homer",
@@ -1330,7 +1720,7 @@
       "change_white": 22
     },
     {
-      "match_id": 63,
+      "match_id": 27,
       "timestamp": 1759539992,
       "red_corner": "Cones of Dunshire",
       "white_corner": "Dispatchula",
@@ -1343,7 +1733,7 @@
       "change_white": 16
     },
     {
-      "match_id": 64,
+      "match_id": 28,
       "timestamp": 1759592813,
       "red_corner": "Judy",
       "white_corner": "Alpacalypse",
@@ -1356,7 +1746,7 @@
       "change_white": 24
     },
     {
-      "match_id": 65,
+      "match_id": 29,
       "timestamp": 1759601980,
       "red_corner": "Cones of Dunshire",
       "white_corner": "Judy",
@@ -1369,7 +1759,7 @@
       "change_white": 15
     },
     {
-      "match_id": 66,
+      "match_id": 30,
       "timestamp": 1759602982,
       "red_corner": "Whammo Can & Driveway Hero",
       "white_corner": "Alpacalypse",
@@ -1382,7 +1772,7 @@
       "change_white": 25
     },
     {
-      "match_id": 67,
+      "match_id": 31,
       "timestamp": 1759604477,
       "red_corner": "Whammo Can & Driveway Hero",
       "white_corner": "Judy",
@@ -1395,7 +1785,7 @@
       "change_white": 21
     },
     {
-      "match_id": 68,
+      "match_id": 32,
       "timestamp": 1759604830,
       "red_corner": "Judy",
       "white_corner": "Alpacalypse",
@@ -1408,7 +1798,7 @@
       "change_white": 22
     },
     {
-      "match_id": 69,
+      "match_id": 33,
       "timestamp": 1759605865,
       "red_corner": "Judy",
       "white_corner": "Dispatchula",
@@ -1421,7 +1811,7 @@
       "change_white": 19
     },
     {
-      "match_id": 70,
+      "match_id": 34,
       "timestamp": 1759606052,
       "red_corner": "Alpacalypse",
       "white_corner": "Dispatchula",
@@ -1434,7 +1824,7 @@
       "change_white": 17
     },
     {
-      "match_id": 71,
+      "match_id": 35,
       "timestamp": 1759606381,
       "red_corner": "Alpacalypse",
       "white_corner": "Cones of Dunshire",
@@ -1445,9 +1835,204 @@
       "new_rating_white": 917,
       "change_red": 16,
       "change_white": -13
+    },
+    {
+      "match_id": 36,
+      "timestamp": 1760140049,
+      "red_corner": "Judy",
+      "white_corner": "Whammo Can & Driveway Hero",
+      "result": "White wins KO",
+      "old_rating_red": 1025,
+      "old_rating_white": 1056,
+      "new_rating_red": 1010,
+      "new_rating_white": 1074,
+      "change_red": -15,
+      "change_white": 18
+    },
+    {
+      "match_id": 37,
+      "timestamp": 1760140621,
+      "red_corner": "Dispatchula",
+      "white_corner": "Homer",
+      "result": "Red wins KO",
+      "old_rating_red": 1072,
+      "old_rating_white": 1060,
+      "new_rating_red": 1091,
+      "new_rating_white": 1045,
+      "change_red": 19,
+      "change_white": -15
+    },
+    {
+      "match_id": 38,
+      "timestamp": 1760141605,
+      "red_corner": "Homer",
+      "white_corner": "Alpacalypse",
+      "result": "White wins KO",
+      "old_rating_red": 1045,
+      "old_rating_white": 1018,
+      "new_rating_red": 1028,
+      "new_rating_white": 1038,
+      "change_red": -17,
+      "change_white": 20
+    },
+    {
+      "match_id": 39,
+      "timestamp": 1760142733,
+      "red_corner": "Dispatchula",
+      "white_corner": "Whammo Can & Driveway Hero",
+      "result": "Red wins KO",
+      "old_rating_red": 1091,
+      "old_rating_white": 1074,
+      "new_rating_red": 1109,
+      "new_rating_white": 1059,
+      "change_red": 18,
+      "change_white": -15
+    },
+    {
+      "match_id": 40,
+      "timestamp": 1760143139,
+      "red_corner": "Judy",
+      "white_corner": "Alpacalypse",
+      "result": "Red wins KO",
+      "old_rating_red": 1010,
+      "old_rating_white": 1038,
+      "new_rating_red": 1030,
+      "new_rating_white": 1021,
+      "change_red": 20,
+      "change_white": -17
+    },
+    {
+      "match_id": 41,
+      "timestamp": 1760744912,
+      "red_corner": "Whammo Can & Driveway Hero",
+      "white_corner": "Cones of Dunshire",
+      "result": "Red wins KO",
+      "old_rating_red": 1059,
+      "old_rating_white": 917,
+      "new_rating_red": 1072,
+      "new_rating_white": 907,
+      "change_red": 13,
+      "change_white": -10
+    },
+    {
+      "match_id": 42,
+      "timestamp": 1760745475,
+      "red_corner": "Judy",
+      "white_corner": "Homer",
+      "result": "Red wins KO",
+      "old_rating_red": 1030,
+      "old_rating_white": 1028,
+      "new_rating_red": 1049,
+      "new_rating_white": 1012,
+      "change_red": 19,
+      "change_white": -16
+    },
+    {
+      "match_id": 43,
+      "timestamp": 1760745872,
+      "red_corner": "Cones of Dunshire",
+      "white_corner": "Dispatchula",
+      "result": "White wins KO",
+      "old_rating_red": 907,
+      "old_rating_white": 1109,
+      "new_rating_red": 899,
+      "new_rating_white": 1120,
+      "change_red": -8,
+      "change_white": 11
+    },
+    {
+      "match_id": 44,
+      "timestamp": 1760746749,
+      "red_corner": "Whammo Can & Driveway Hero",
+      "white_corner": "Homer",
+      "result": "White wins KO",
+      "old_rating_red": 1072,
+      "old_rating_white": 1012,
+      "new_rating_red": 1053,
+      "new_rating_white": 1034,
+      "change_red": -19,
+      "change_white": 22
+    },
+    {
+      "match_id": 45,
+      "timestamp": 1760746932,
+      "red_corner": "Alpacalypse",
+      "white_corner": "Dispatchula",
+      "result": "White wins KO",
+      "old_rating_red": 1021,
+      "old_rating_white": 1120,
+      "new_rating_red": 1009,
+      "new_rating_white": 1135,
+      "change_red": -12,
+      "change_white": 15
+    },
+    {
+      "match_id": 46,
+      "timestamp": 1760747107,
+      "red_corner": "Judy",
+      "white_corner": "Cones of Dunshire",
+      "result": "Red wins KO",
+      "old_rating_red": 1049,
+      "old_rating_white": 899,
+      "new_rating_red": 1062,
+      "new_rating_white": 890,
+      "change_red": 13,
+      "change_white": -9
+    },
+    {
+      "match_id": 47,
+      "timestamp": 1760747624,
+      "red_corner": "Alpacalypse",
+      "white_corner": "Homer",
+      "result": "White wins KO",
+      "old_rating_red": 1009,
+      "old_rating_white": 1034,
+      "new_rating_red": 994,
+      "new_rating_white": 1052,
+      "change_red": -15,
+      "change_white": 18
+    },
+    {
+      "match_id": 48,
+      "timestamp": 1760749660,
+      "red_corner": "Alpacalypse",
+      "white_corner": "Whammo Can & Driveway Hero",
+      "result": "Red wins KO",
+      "old_rating_red": 994,
+      "old_rating_white": 1053,
+      "new_rating_red": 1016,
+      "new_rating_white": 1034,
+      "change_red": 22,
+      "change_white": -19
+    },
+    {
+      "match_id": 49,
+      "timestamp": 1760750341,
+      "red_corner": "Homer",
+      "white_corner": "Cones of Dunshire",
+      "result": "Red wins KO",
+      "old_rating_red": 1052,
+      "old_rating_white": 890,
+      "new_rating_red": 1064,
+      "new_rating_white": 881,
+      "change_red": 12,
+      "change_white": -9
+    },
+    {
+      "match_id": 50,
+      "timestamp": 1760750779,
+      "red_corner": "Dispatchula",
+      "white_corner": "Judy",
+      "result": "White wins KO",
+      "old_rating_red": 1135,
+      "old_rating_white": 1062,
+      "new_rating_red": 1116,
+      "new_rating_white": 1085,
+      "change_red": -19,
+      "change_white": 23
     }
   ],
-  "next_match_id": 72,
+  "next_match_id": 51,
   "settings": {
     "K": 32,
     "ko_weight": 1.1
