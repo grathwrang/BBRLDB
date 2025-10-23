@@ -16,6 +16,7 @@ from storage import (
     save_judging_state,
     update_judging_state,
 )
+from challonge_service import ChallongeService
 from schedule_engine import generate
 from judging import (
     CATEGORY_SPECS,
@@ -35,6 +36,8 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY","devkey")
+
+challonge_service = ChallongeService()
 
 WEIGHT_CLASSES = list(DB_FILES.keys())
 VALID_RESULTS = {"Red wins JD", "Red wins KO", "White wins JD", "White wins KO", "Draw"}
@@ -967,6 +970,23 @@ def rankings_public():
     # rank index
     for i, r in enumerate(rows, start=1): r["rank"] = i
     return render_template("public_rankings.html", wc=wc, rows=rows)
+
+
+@app.get("/api/challonge/tournament")
+def challonge_tournament_api():
+    payload = challonge_service.get_tournament()
+    status = 200
+    if not payload.get("configured", True):
+        status = 503
+    elif payload.get("error") and payload.get("tournament") is None:
+        status = 502
+    return jsonify(payload), status
+
+
+@app.get("/TournamentPublic")
+def tournament_public():
+    payload = challonge_service.get_tournament()
+    return render_template("public_tournament.html", challonge=payload)
 
 
 @app.get("/robot_card/<path:wc>/<path:name>")
