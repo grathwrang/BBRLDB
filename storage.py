@@ -14,6 +14,7 @@ DB_FILES = {
 SCHEDULE_FP = os.path.join(DATA_DIR, "schedule.json")
 JUDGING_FP = os.path.join(DATA_DIR, "judging.json")
 JUDGING_LOCK_FP = os.path.join(DATA_DIR, "judging.lock")
+TOURNAMENTS_FP = os.path.join(DATA_DIR, "tournaments.json")
 DEFAULT_RATING = 1000; DEFAULT_K = 32; KO_WEIGHT = 1.10
 def ensure_dirs(): os.makedirs(DATA_DIR, exist_ok=True)
 def _blank_db():
@@ -66,6 +67,43 @@ def save_schedule(sched):
     with os.fdopen(fd,"w",encoding="utf-8") as f:
         json.dump(sched,f,indent=2,ensure_ascii=False); f.flush(); os.fsync(f.fileno())
     os.replace(tmp, SCHEDULE_FP)
+
+
+def _blank_tournaments():
+    return {"tournaments": []}
+
+
+def load_tournaments():
+    ensure_dirs()
+    if not os.path.exists(TOURNAMENTS_FP):
+        return _blank_tournaments()
+    with open(TOURNAMENTS_FP, "r", encoding="utf-8") as f:
+        try:
+            data = json.load(f)
+        except Exception:
+            return _blank_tournaments()
+    if not isinstance(data, dict):
+        return _blank_tournaments()
+    tournaments = data.get("tournaments")
+    if not isinstance(tournaments, list):
+        data["tournaments"] = []
+    return data
+
+
+def save_tournaments(data):
+    ensure_dirs()
+    if not isinstance(data, dict):
+        data = _blank_tournaments()
+    else:
+        tournaments = data.get("tournaments")
+        if not isinstance(tournaments, list):
+            data["tournaments"] = []
+    fd, tmp = tempfile.mkstemp(prefix="._elo_tournaments_", dir=DATA_DIR)
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, TOURNAMENTS_FP)
 
 def _blank_judging_state():
     return {

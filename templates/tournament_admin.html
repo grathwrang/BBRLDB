@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1>Tournament Administration</h1>
+
+<section class="tournament-create">
+  <h2>Create a Tournament</h2>
+  <form method="post" action="{{ url_for('tournaments_admin_create') }}">
+    <div class="form-row">
+      <label for="tournament-name">Name</label>
+      <input id="tournament-name" type="text" name="name" required>
+    </div>
+    <div class="form-row">
+      <label for="tournament-weight-classes">Weight Classes</label>
+      <select id="tournament-weight-classes" name="weight_classes" multiple size="{{ WEIGHT_CLASSES|length }}">
+        {% for wc in WEIGHT_CLASSES %}
+        <option value="{{ wc }}">{{ wc }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-row">
+      <label for="tournament-elimination">Bracket Type</label>
+      <select id="tournament-elimination" name="elimination">
+        <option value="single">Single Elimination</option>
+        <option value="double">Double Elimination</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label for="tournament-cap">Robot Cap</label>
+      <input id="tournament-cap" type="number" min="0" name="robot_cap" placeholder="e.g. 16">
+    </div>
+    <div class="form-row">
+      <label for="tournament-entrants">Select Entrants</label>
+      <select id="tournament-entrants" name="entrants" multiple size="10">
+        {% for wc, robots in present_by_weight.items() %}
+          {% if robots %}
+          <optgroup label="{{ wc }}">
+            {% for robot in robots %}
+            <option value="{{ robot }}">{{ robot }}</option>
+            {% endfor %}
+          </optgroup>
+          {% endif %}
+        {% endfor %}
+      </select>
+      <p class="help-text">Only robots marked as present appear here.</p>
+    </div>
+    <button type="submit">Create Tournament</button>
+  </form>
+</section>
+
+<section class="tournament-manage">
+  <h2>Existing Tournaments</h2>
+  {% if tournaments %}
+    {% for tournament in tournaments %}
+    <article class="tournament-card">
+      <header>
+        <h3>{{ tournament.name }}</h3>
+        <p class="meta">{{ tournament.elimination|default('single')|title }} elimination &middot; Weight classes: {{ tournament.weight_classes|join(', ') }}</p>
+        <p class="meta">Robot cap: {{ tournament.robot_cap if tournament.robot_cap is not none else 'Uncapped' }}</p>
+        {% if tournament.entrants %}
+        <p class="meta">Entrants: {{ tournament.entrants|join(', ') }}</p>
+        {% else %}
+        <p class="meta">No entrants have been selected yet.</p>
+        {% endif %}
+      </header>
+
+      <section class="tournament-matches">
+        <h4>Bracket Matches</h4>
+        {% set matches = tournament.matches or [] %}
+        {% if matches %}
+          {% for match in matches %}
+          <form method="post" action="{{ url_for('tournaments_admin_update') }}" class="match-row">
+            <input type="hidden" name="tournament_id" value="{{ tournament.id }}">
+            <input type="hidden" name="action" value="set_winner">
+            <input type="hidden" name="match_id" value="{{ match.id }}">
+            <div class="match-details">
+              <strong>Round {{ match.round }}</strong> &mdash; {{ match.red }} vs {{ match.white }}
+            </div>
+            <label class="match-winner">Winner
+              <select name="winner">
+                <option value="">-- Pending --</option>
+                <option value="{{ match.red }}" {% if match.winner == match.red %}selected{% endif %}>{{ match.red }}</option>
+                <option value="{{ match.white }}" {% if match.winner == match.white %}selected{% endif %}>{{ match.white }}</option>
+              </select>
+            </label>
+            <button type="submit">Save</button>
+          </form>
+          {% endfor %}
+        {% else %}
+          <p>No matches have been created.</p>
+        {% endif %}
+      </section>
+
+      <section class="tournament-add-match">
+        <h4>Add Match</h4>
+        <form method="post" action="{{ url_for('tournaments_admin_update') }}">
+          <input type="hidden" name="tournament_id" value="{{ tournament.id }}">
+          <input type="hidden" name="action" value="add_match">
+          <div class="form-row">
+            <label>Round
+              <input type="text" name="round" value="{{ matches|length + 1 }}">
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Match ID (optional)
+              <input type="text" name="match_id" placeholder="Auto if blank">
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Red Robot
+              <select name="red_robot">
+                <option value="">-- Select robot --</option>
+                {% for wc, robots in present_by_weight.items() %}
+                  {% for robot in robots %}
+                  <option value="{{ robot }}">{{ robot }} ({{ wc }})</option>
+                  {% endfor %}
+                {% endfor %}
+              </select>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>White Robot
+              <select name="white_robot">
+                <option value="">-- Select robot --</option>
+                {% for wc, robots in present_by_weight.items() %}
+                  {% for robot in robots %}
+                  <option value="{{ robot }}">{{ robot }} ({{ wc }})</option>
+                  {% endfor %}
+                {% endfor %}
+              </select>
+            </label>
+          </div>
+          <button type="submit">Add Match</button>
+        </form>
+      </section>
+    </article>
+    {% endfor %}
+  {% else %}
+    <p>No tournaments configured yet.</p>
+  {% endif %}
+</section>
+{% endblock %}

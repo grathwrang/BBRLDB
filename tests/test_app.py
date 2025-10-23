@@ -24,6 +24,7 @@ class AppRoutesTestCase(unittest.TestCase):
         patched_judging_fp = os.path.join(self._tempdir.name, "judging.json")
         patched_lock_fp = os.path.join(self._tempdir.name, "judging.lock")
         patched_schedule_fp = os.path.join(self._tempdir.name, "schedule.json")
+        patched_tournaments_fp = os.path.join(self._tempdir.name, "tournaments.json")
         patched_db_files = {
             wc: os.path.join(self._tempdir.name, f"{wc.lower()}_elo.json")
             for wc in storage.DB_FILES
@@ -35,6 +36,7 @@ class AppRoutesTestCase(unittest.TestCase):
             mock.patch.object(storage, "SCHEDULE_FP", patched_schedule_fp),
             mock.patch.object(storage, "JUDGING_FP", patched_judging_fp),
             mock.patch.object(storage, "JUDGING_LOCK_FP", patched_lock_fp),
+            mock.patch.object(storage, "TOURNAMENTS_FP", patched_tournaments_fp),
             mock.patch.object(storage, "DB_FILES", patched_db_files),
         ]
         for p in self._patches:

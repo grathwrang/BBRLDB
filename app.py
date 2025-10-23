@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, send_file, flash
-import time, os, copy
+import time, os, copy, uuid
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from werkzeug.utils import secure_filename
@@ -15,6 +15,8 @@ from storage import (
     load_judging_state,
     save_judging_state,
     update_judging_state,
+    load_tournaments,
+    save_tournaments,
 )
 from schedule_engine import generate
 from judging import (
@@ -57,6 +59,25 @@ def inject_globals():
     sched = load_schedule().get("list", [])
     top = sched[0] if sched else None
     return {"WEIGHT_CLASSES": WEIGHT_CLASSES, "TOP_MATCH": top}
+
+
+def get_present_robots_by_weight():
+    present = {}
+    all_dbs = load_all()
+    for wc, db in all_dbs.items():
+        robots = []
+        for name, info in (db.get("robots", {}) or {}).items():
+            if info.get("present"):
+                robots.append(name)
+        present[wc] = sorted(robots)
+    return present
+
+
+def _find_tournament(tournaments, tournament_id):
+    for tournament in tournaments:
+        if str(tournament.get("id")) == str(tournament_id):
+            return tournament
+    return None
 
 def robot_stats(db, name):
     info = db.get("robots", {}).get(name, {})
@@ -400,6 +421,134 @@ def robot_presence():
         robots[name]["present"] = present
         save_db(wc, db)
     return redirect(url_for("index", wc=wc))
+
+
+@app.get("/tournaments/admin")
+def tournament_admin():
+    data = load_tournaments()
+    tournaments = data.get("tournaments", []) if isinstance(data, dict) else []
+    # ensure matches lists exist for downstream rendering without mutating persisted data
+    normalized = []
+    for entry in tournaments:
+        if not isinstance(entry, dict):
+            continue
+        item = dict(entry)
+        matches = item.get("matches")
+        if not isinstance(matches, list):
+            item["matches"] = []
+        normalized.append(item)
+    return render_template(
+        "tournament_admin.html",
+        tournaments=normalized,
+        present_by_weight=get_present_robots_by_weight(),
+    )
+
+
+@app.post("/tournaments/admin/create")
+def tournaments_admin_create():
+    name = (request.form.get("name") or "").strip()
+    if not name:
+        flash("Tournament name is required", "error")
+        return redirect(url_for("tournament_admin"))
+
+    weight_classes = [wc for wc in request.form.getlist("weight_classes") if wc in WEIGHT_CLASSES]
+    if not weight_classes:
+        weight_classes = list(WEIGHT_CLASSES)
+
+    elimination = (request.form.get("elimination") or "single").strip().lower()
+    elimination = "double" if elimination.startswith("double") else "single"
+
+    cap_raw = (request.form.get("robot_cap") or "").strip()
+    robot_cap = None
+    if cap_raw:
+        try:
+            robot_cap = max(int(cap_raw), 0)
+        except Exception:
+            flash("Robot cap must be a number", "error")
+            return redirect(url_for("tournament_admin"))
+
+    entrants = []
+    seen = set()
+    for entrant in request.form.getlist("entrants"):
+        entrant = (entrant or "").strip()
+        if entrant and entrant not in seen:
+            entrants.append(entrant)
+            seen.add(entrant)
+
+    data = load_tournaments()
+    tournaments = data.get("tournaments") if isinstance(data, dict) else None
+    if tournaments is None or not isinstance(tournaments, list):
+        data = {"tournaments": []}
+        tournaments = data["tournaments"]
+
+    tournament = {
+        "id": str(uuid.uuid4()),
+        "name": name,
+        "weight_classes": weight_classes,
+        "elimination": elimination,
+        "robot_cap": robot_cap,
+        "entrants": entrants,
+        "matches": [],
+        "created_at": int(time.time()),
+    }
+    tournaments.append(tournament)
+    save_tournaments(data)
+    flash(f"Tournament '{name}' created", "info")
+    return redirect(url_for("tournament_admin"))
+
+
+@app.post("/tournaments/admin/update")
+def tournaments_admin_update():
+    tournament_id = (request.form.get("tournament_id") or "").strip()
+    if not tournament_id:
+        flash("Tournament ID missing", "error")
+        return redirect(url_for("tournament_admin"))
+
+    data = load_tournaments()
+    tournaments = data.get("tournaments") if isinstance(data, dict) else None
+    if tournaments is None or not isinstance(tournaments, list):
+        flash("Tournament data unavailable", "error")
+        return redirect(url_for("tournament_admin"))
+
+    tournament = _find_tournament(tournaments, tournament_id)
+    if tournament is None:
+        flash("Tournament not found", "error")
+        return redirect(url_for("tournament_admin"))
+
+    action = (request.form.get("action") or "set_winner").strip()
+    if action == "add_match":
+        red = (request.form.get("red_robot") or "").strip()
+        white = (request.form.get("white_robot") or "").strip()
+        round_label = (request.form.get("round") or "").strip() or "1"
+        match_id = (request.form.get("match_id") or "").strip() or str(uuid.uuid4())
+        if red and white:
+            matches = tournament.setdefault("matches", [])
+            matches.append(
+                {
+                    "id": match_id,
+                    "round": round_label,
+                    "red": red,
+                    "white": white,
+                    "winner": None,
+                }
+            )
+        else:
+            flash("Both robots are required to add a match", "error")
+    else:
+        match_id = (request.form.get("match_id") or "").strip()
+        winner = (request.form.get("winner") or "").strip()
+        matches = tournament.get("matches") or []
+        updated = False
+        for match in matches:
+            if str(match.get("id")) == match_id:
+                match["winner"] = winner or None
+                updated = True
+                break
+        if not updated:
+            flash("Match not found", "error")
+
+    save_tournaments(data)
+    return redirect(url_for("tournament_admin"))
 
 def save_upload(file):
     # Return a relative URL under /static/uploads or None
