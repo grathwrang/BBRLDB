@@ -1,4 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, send_file, flash
+from flask import (
+    Flask,
+    render_template,
+    request,
+    redirect,
+    url_for,
+    jsonify,
+    send_file,
+    flash,
+    abort,
+)
 import time, os, copy
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -15,6 +25,8 @@ from storage import (
     load_judging_state,
     save_judging_state,
     update_judging_state,
+    list_tournaments,
+    load_tournament,
 )
 from schedule_engine import generate
 from judging import (
@@ -56,7 +68,12 @@ def get_settings(db):
 def inject_globals():
     sched = load_schedule().get("list", [])
     top = sched[0] if sched else None
-    return {"WEIGHT_CLASSES": WEIGHT_CLASSES, "TOP_MATCH": top}
+    tournaments = list_tournaments()
+    return {
+        "WEIGHT_CLASSES": WEIGHT_CLASSES,
+        "TOP_MATCH": top,
+        "PUBLIC_TOURNAMENTS": tournaments,
+    }
 
 def robot_stats(db, name):
     info = db.get("robots", {}).get(name, {})
@@ -127,6 +144,111 @@ def robot_display(weight_class, name):
         "draws": stats.get("draws", 0),
         "ko_wins": stats.get("ko_wins", 0),
         "ko_losses": stats.get("ko_losses", 0),
+    }
+
+
+def _normalize_tournament_sections(data):
+    sections = data.get("brackets")
+    if isinstance(sections, dict):
+        sections = [sections]
+    if not sections:
+        rounds = data.get("rounds")
+        if isinstance(rounds, dict):
+            rounds = [rounds]
+        sections = [
+            {
+                "key": "main",
+                "title": data.get("name") or data.get("id") or "Bracket",
+                "rounds": rounds or [],
+            }
+        ]
+    normalized = []
+    for section in sections or []:
+        if not isinstance(section, dict):
+            continue
+        rounds = section.get("rounds")
+        if isinstance(rounds, dict):
+            rounds = [rounds]
+        normalized.append(
+            {
+                "key": section.get("key") or section.get("id") or section.get("title") or section.get("name") or "main",
+                "title": section.get("title") or section.get("name") or (data.get("name") or "Bracket"),
+                "rounds": rounds or [],
+            }
+        )
+    return normalized
+
+
+def _build_tournament_slot(slot, default_weight_class):
+    slot = slot or {}
+    if not isinstance(slot, dict):
+        slot = {"robot": slot}
+    payload = dict(slot)
+    robot_name = payload.get("robot") or payload.get("name")
+    if robot_name and "robot" not in payload:
+        payload["robot"] = robot_name
+    slot_wc = payload.get("weight_class") or default_weight_class
+    payload["robot_display"] = robot_display(slot_wc, robot_name)
+    payload.setdefault("seed", payload.get("ranking"))
+    payload.setdefault("is_bye", bool(payload.get("bye")))
+    return payload
+
+
+def _build_tournament_match(match, default_weight_class):
+    match = match or {}
+    if not isinstance(match, dict):
+        return {"id": None, "slots": []}
+    payload = dict(match)
+    slots = payload.get("slots")
+    if not slots:
+        red = match.get("red")
+        white = match.get("white")
+        participants = []
+        if isinstance(red, dict) or red:
+            participants.append(red)
+        if isinstance(white, dict) or white:
+            participants.append(white)
+        if participants:
+            slots = participants
+    if not isinstance(slots, list):
+        slots = [slots]
+    payload["slots"] = [_build_tournament_slot(slot, default_weight_class) for slot in slots]
+    return payload
+
+
+def build_public_tournament_payload(tournament_id):
+    data = load_tournament(tournament_id)
+    if not data:
+        return None
+    default_weight_class = data.get("weight_class")
+    sections = []
+    for section in _normalize_tournament_sections(data):
+        rounds_payload = []
+        for round_data in section.get("rounds", []) or []:
+            if not isinstance(round_data, dict):
+                continue
+            matches = round_data.get("matches")
+            if isinstance(matches, dict):
+                matches = [matches]
+            round_payload = {
+                "name": round_data.get("name") or round_data.get("title") or "",
+                "matches": [
+                    _build_tournament_match(match, default_weight_class) for match in (matches or []) if match is not None
+                ],
+            }
+            rounds_payload.append(round_payload)
+        sections.append({"key": section["key"], "title": section["title"], "rounds": rounds_payload})
+    return {
+        "meta": {
+            "id": data.get("id"),
+            "name": data.get("name"),
+            "format": data.get("format") or data.get("type") or "single",
+            "weight_class": data.get("weight_class"),
+            "updated_at": data.get("updated_at"),
+            "auto_refresh": data.get("auto_refresh"),
+            "auto_refresh_seconds": data.get("auto_refresh_seconds"),
+        },
+        "sections": sections,
     }
 
 
@@ -936,6 +1058,38 @@ def schedule_public():
         judge_labels=JUDGE_LABELS,
         category_specs=CATEGORY_SPECS,
     )
+
+
+@app.get("/tournaments/public/<path:tournament_id>")
+def tournament_public(tournament_id):
+    payload = build_public_tournament_payload(tournament_id)
+    if not payload:
+        abort(404)
+    meta = payload["meta"]
+    refresh_seconds = meta.get("auto_refresh_seconds")
+    try:
+        refresh_seconds = int(refresh_seconds) if refresh_seconds is not None else None
+    except (TypeError, ValueError):
+        refresh_seconds = None
+    if refresh_seconds is None and meta.get("auto_refresh"):
+        refresh_seconds = 30
+    bracket_format = (meta.get("format") or "single").lower()
+    is_double = bracket_format.startswith("double") or len(payload.get("sections", [])) > 1
+    return render_template(
+        "public_tournament.html",
+        tournament=meta,
+        bracket_sections=payload.get("sections", []),
+        is_double_elimination=is_double,
+        refresh_seconds=refresh_seconds,
+    )
+
+
+@app.get("/api/tournaments/<path:tournament_id>")
+def tournament_public_api(tournament_id):
+    payload = build_public_tournament_payload(tournament_id)
+    if not payload:
+        return jsonify({"error": "Tournament not found"}), 404
+    return jsonify(payload)
 
 @app.get("/RankingsPublic")
 def rankings_public():

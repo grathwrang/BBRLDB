@@ -1,0 +1,76 @@
+{% extends "public_base.html" %}
+
+{% block extra_head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='bracket.css') }}">
+{% endblock %}
+
+{% block body %}
+  <div class="page-title tournament-title">{{ tournament.name }}</div>
+  <div class="tournament-meta">
+    {% if tournament.weight_class %}<span class="badge">{{ tournament.weight_class }}</span>{% endif %}
+    {% if is_double_elimination %}<span class="badge badge-accent">Double Elimination</span>{% else %}<span class="badge badge-accent">Single Elimination</span>{% endif %}
+    {% if tournament.updated_at %}
+      <span class="updated-at">Updated {{ tournament.updated_at | datetimefromts }}</span>
+    {% endif %}
+  </div>
+
+  <div class="bracket-wrapper" id="tournamentBracket" data-format="{{ 'double' if is_double_elimination else 'single' }}" data-updated="{{ tournament.updated_at or '' }}">
+    {% for section in bracket_sections %}
+      <section class="bracket-section">
+        <h2 class="bracket-section-title">{{ section.title }}</h2>
+        <div class="bracket-rounds">
+          {% for round in section.rounds %}
+            <div class="bracket-round">
+              <div class="bracket-round-title">{{ round.name or 'Round ' ~ loop.index }}</div>
+              <div class="bracket-round-matches">
+                {% for match in round.matches %}
+                  <div class="bracket-match">
+                    {% for slot in match.slots %}
+                      <div class="bracket-slot{% if slot.is_bye %} slot-bye{% endif %}">
+                        <div class="slot-seed">{% if slot.seed %}#{{ slot.seed }}{% endif %}</div>
+                        <div class="slot-photo">
+                          {% if slot.robot_display.image %}
+                            <img src="{{ slot.robot_display.image }}" alt="{{ slot.robot_display.name or slot.robot or 'TBD' }} photo">
+                          {% else %}
+                            <div class="slot-photo-fallback" aria-hidden="true">{{ (slot.robot_display.name or slot.robot or 'TBD')[0] }}</div>
+                          {% endif %}
+                        </div>
+                        <div class="slot-meta">
+                          <div class="slot-name">{{ slot.robot_display.name or slot.robot or 'TBD' }}</div>
+                          {% if slot.robot_display.driver or slot.robot_display.team %}
+                            <div class="slot-team">{{ slot.robot_display.driver }}{% if slot.robot_display.team %} — {{ slot.robot_display.team }}{% endif %}</div>
+                          {% endif %}
+                          {% if slot.robot_display.rating %}
+                            <div class="slot-rating">Elo {{ slot.robot_display.rating }}</div>
+                          {% endif %}
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  <div class="bracket-match empty">Bracket TBD</div>
+                {% endfor %}
+              </div>
+            </div>
+          {% else %}
+            <p class="small muted">No rounds configured yet.</p>
+          {% endfor %}
+        </div>
+      </section>
+    {% else %}
+      <p class="small muted">Tournament bracket coming soon.</p>
+    {% endfor %}
+  </div>
+{% endblock %}
+
+{% block extra_scripts %}
+  {{ super() }}
+  {% if refresh_seconds %}
+    <script id="publicBracketConfig" type="application/json">{{ {
+      'apiUrl': url_for('tournament_public_api', tournament_id=tournament.id),
+      'refreshInterval': refresh_seconds * 1000
+    } | tojson }}</script>
+  {% endif %}
+  <script src="{{ url_for('static', filename='bracket.js') }}"></script>
+{% endblock %}

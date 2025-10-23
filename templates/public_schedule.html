@@ -27,6 +27,17 @@
   </div>
   {% endif %}
 
+  {% if PUBLIC_TOURNAMENTS %}
+  <div class="panel" style="margin-top:12px">
+    <h3 style="margin:6px 0 10px;color:#e53935">Tournaments</h3>
+    <ul class="tournament-link-list">
+      {% for tourney in PUBLIC_TOURNAMENTS %}
+        <li><a class="link" href="{{ url_for('tournament_public', tournament_id=tourney.id) }}">{{ tourney.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
   <div class="panel" style="margin-top:12px">
     <h3 style="margin:6px 0 10px;color:#e53935">Tonight's Schedule</h3>
     {% if schedule and schedule|length > 0 %}
