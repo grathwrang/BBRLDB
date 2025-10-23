@@ -12,6 +12,7 @@
     <div class="top-tabs">
       <a href="{{ url_for('schedule_public') }}" class="{{ 'active' if request.path == '/SchedulePublic' else '' }}">Schedule</a>
       <a href="{{ url_for('rankings_public') }}" class="{{ 'active' if request.path == '/RankingsPublic' else '' }}">Rankings</a>
+      <a href="{{ url_for('tournament_public') }}" class="{{ 'active' if request.path == '/TournamentPublic' else '' }}">Tournament</a>
     </div>
     {% block body %}{% endblock %}
     <dialog id="robotModal">

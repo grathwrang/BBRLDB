@@ -202,6 +202,77 @@ class AppRoutesTestCase(unittest.TestCase):
         self.assertEqual(updated_db.get("next_match_id"), new_id + 1)
         self.assertEqual(updated_db["robots"][red]["matches"][0]["match_id"], new_id)
 
+    def test_challonge_api_returns_payload(self):
+        sample_payload = {
+            "configured": True,
+            "error": None,
+            "fetched_at": "2024-01-01T00:00:00Z",
+            "tournament": {
+                "name": "Sample Cup",
+                "state": "underway",
+                "total_participants": 8,
+                "total_matches": 2,
+                "current_match": None,
+                "upcoming_matches": [],
+                "recent_matches": [],
+                "rounds": [],
+            },
+        }
+        with mock.patch.object(bot_app, "challonge_service") as challonge_mock:
+            challonge_mock.get_tournament.return_value = sample_payload
+            response = self.client.get("/api/challonge/tournament")
+
+        self.assertEqual(response.status_code, 200)
+        payload = response.get_json()
+        self.assertEqual(payload["tournament"]["name"], "Sample Cup")
+        self.assertTrue(payload["configured"])
+
+    def test_challonge_public_page_renders_with_payload(self):
+        sample_payload = {
+            "configured": True,
+            "error": None,
+            "fetched_at": "2024-01-01T00:00:00Z",
+            "tournament": {
+                "name": "Sample Cup",
+                "state": "underway",
+                "url": "https://challonge.com/sample",
+                "total_participants": 8,
+                "total_matches": 4,
+                "current_match": {
+                    "id": 12,
+                    "round_label": "Round 1",
+                    "player1_name": "Alpha",
+                    "player2_name": "Beta",
+                    "status_text": "Round 1 · In Progress",
+                },
+                "upcoming_matches": [],
+                "recent_matches": [],
+                "rounds": [],
+            },
+        }
+        with mock.patch.object(bot_app, "challonge_service") as challonge_mock:
+            challonge_mock.get_tournament.return_value = sample_payload
+            response = self.client.get("/TournamentPublic")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"Sample Cup", response.data)
+        self.assertIn(b"Current Match", response.data)
+
+    def test_challonge_api_returns_503_when_unconfigured(self):
+        sample_payload = {
+            "configured": False,
+            "error": "Challonge integration is not configured.",
+            "tournament": None,
+            "fetched_at": None,
+        }
+        with mock.patch.object(bot_app, "challonge_service") as challonge_mock:
+            challonge_mock.get_tournament.return_value = sample_payload
+            response = self.client.get("/api/challonge/tournament")
+
+        self.assertEqual(response.status_code, 503)
+        payload = response.get_json()
+        self.assertFalse(payload["configured"])
+
 
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()

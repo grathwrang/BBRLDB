@@ -169,3 +169,43 @@ dialog::backdrop{background:rgba(0,0,0,0.65)}
   .judge-fight-card{grid-template-columns:1fr;justify-items:center}
   .judge-controls{order:3}
 }
+
+/* Tournament page */
+.challonge-wrapper{display:grid;gap:16px}
+.tournament-status .tournament-heading{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:flex-start}
+.tournament-name{margin:0;font-family:'Bank Gothic','BankGothic Md BT',Michroma,'Eurostile','Square 721',sans-serif;font-size:36px;letter-spacing:0.5px}
+.tournament-subtitle{margin:4px 0 0;color:var(--muted);font-size:15px}
+.tournament-subtitle .highlight{color:var(--red);font-weight:600}
+.tournament-meta{display:flex;gap:12px;flex-wrap:wrap}
+.tournament-meta > div{background:var(--panel2);border:1px solid #2a2e33;border-radius:6px;padding:8px 12px;min-width:120px}
+.tournament-meta .meta-label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted)}
+.tournament-meta .meta-value{display:block;font-size:20px;font-weight:700;color:#fff}
+.tournament-links{margin-top:12px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.error-chip{background:rgba(229,57,53,0.18);border:1px solid #e53935;color:#ff8a80;border-radius:999px;padding:6px 12px;font-size:13px}
+.panel-title{margin:0 0 8px;font-size:20px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.08em}
+.empty-copy{margin:4px 0 0;color:var(--muted);font-size:15px}
+.match-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.match-list.compact{gap:6px}
+.match-row{display:grid;gap:12px;grid-template-columns:minmax(120px,140px) 1fr minmax(140px,auto);align-items:center;background:var(--panel2);border:1px solid #2a2e33;border-radius:6px;padding:8px 12px}
+.match-round{font-size:13px;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted)}
+.match-players{display:flex;align-items:center;gap:8px;font-weight:600;font-size:17px;flex-wrap:wrap}
+.match-player{color:#fff}
+.match-player.winner{color:var(--green)}
+.match-vs{color:var(--muted);font-size:14px;text-transform:uppercase;letter-spacing:0.04em}
+.match-meta{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.match-score{background:rgba(62,166,255,0.12);border:1px solid rgba(62,166,255,0.35);border-radius:999px;padding:3px 10px;color:#8ecbff;font-weight:600}
+.current-match-card{background:var(--panel2);border:1px solid #2a2e33;border-radius:6px;padding:12px;display:grid;gap:12px}
+.current-versus{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;font-size:24px;font-weight:700}
+.current-player{color:#fff;min-width:0}
+.current-player.winner{color:var(--green)}
+.current-vs{color:var(--red);font-size:26px;letter-spacing:0.08em;text-transform:uppercase}
+.current-meta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.rounds-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.round-card{background:var(--panel2);border:1px solid #2a2e33;border-radius:6px;padding:10px;display:grid;gap:8px}
+.round-title{margin:0;font-size:18px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.05em}
+
+@media (max-width: 900px){
+  .tournament-main{grid-template-columns:1fr}
+  .match-row{grid-template-columns:1fr}
+  .match-meta{justify-content:flex-start}
+}
