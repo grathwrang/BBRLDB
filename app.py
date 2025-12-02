@@ -465,6 +465,22 @@ def robot_delete():
         save_db(wc, db)
     return redirect(url_for("index", wc=wc))
 
+@app.get("/api/robots")
+def robots_api():
+    all_dbs = load_all()
+    robots = []
+    for wc, db in all_dbs.items():
+        for name, info in (db.get("robots", {}) or {}).items():
+            robots.append({
+                "weight_class": wc,
+                "name": name,
+                "team": info.get("team_name", ""),
+                "driver": info.get("driver_name", ""),
+                "crew": info.get("crew_names", ""),
+                "rating": info.get("rating", DEFAULT_RATING),
+            })
+    return jsonify({"robots": robots})
+
 @app.get("/robot/<wc>/<name>")
 def robot_info(wc, name):
     if wc not in WEIGHT_CLASSES: wc = WEIGHT_CLASSES[0]
