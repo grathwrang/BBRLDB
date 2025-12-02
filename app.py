@@ -937,6 +937,27 @@ def schedule_public():
         category_specs=CATEGORY_SPECS,
     )
 
+@app.get("/api/schedule")
+def schedule_api():
+    # Keep judging state in sync with schedule file
+    state, schedule_data, schedule_list = get_synced_judging_state()
+    if not isinstance(schedule_list, list):
+        schedule_list = []
+
+    payload = []
+    for i, m in enumerate(schedule_list):
+        payload.append({
+            "index": i,
+            "weight_class": m.get("weight_class", ""),
+            "red": m.get("red", ""),
+            "white": m.get("white", ""),
+            # Optionally: any challonge IDs you attach later
+            "challonge_match_id": m.get("challonge_match_id"),
+            "challonge_tournament_id": m.get("challonge_tournament_id"),
+        })
+
+    return jsonify({"schedule": payload})
+
 @app.get("/RankingsPublic")
 def rankings_public():
     wc = request.args.get("wc", WEIGHT_CLASSES[0])
