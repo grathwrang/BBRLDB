@@ -16,3 +16,6 @@ static/uploads/
 tmp/
 logs/
 *.log
+
+# local rebuild artifacts
+data/*_pre_oct21.txt
