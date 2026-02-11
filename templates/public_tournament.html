@@ -1,0 +1,125 @@
+{% extends "public_base.html" %}
+{% block body %}
+{% set payload = challonge or {} %}
+{% set tournament = payload.get('tournament') %}
+<h1 class="page-title">Tournament</h1>
+
+{% macro match_row(match) -%}
+<li class="match-row" data-match-id="{{ match.get('id') }}">
+  <div class="match-round">{{ match.get('round_label') or 'Round' }}</div>
+  <div class="match-players">
+    <span class="match-player {{ 'winner' if match.get('winner_slot') == 'player1' else '' }}">{{ match.get('player1_name') or 'TBD' }}</span>
+    <span class="match-vs">vs</span>
+    <span class="match-player {{ 'winner' if match.get('winner_slot') == 'player2' else '' }}">{{ match.get('player2_name') or 'TBD' }}</span>
+  </div>
+  <div class="match-meta">
+    {% if match.get('score_text') %}<span class="match-score">{{ match.get('score_text') }}</span>{% endif %}
+    <span class="match-state">{{ match.get('status_text') }}</span>
+  </div>
+</li>
+{%- endmacro %}
+
+<div class="challonge-wrapper" data-challonge-root>
+  <section class="panel tournament-status" data-challonge-status>
+    <div class="tournament-heading">
+      <div>
+        <h2 class="tournament-name" data-challonge-name>{{ tournament.get('name') if tournament else 'Challonge Tournament' }}</h2>
+        <p class="tournament-subtitle" data-challonge-state>
+          {% if tournament and tournament.get('state') %}
+            State: <span class="highlight">{{ tournament.get('state')|capitalize }}</span>
+          {% else %}
+            Waiting for tournament details
+          {% endif %}
+        </p>
+      </div>
+      <div class="tournament-meta">
+        <div><span class="meta-label">Participants</span><span class="meta-value" data-challonge-participants>{{ tournament.get('total_participants') if tournament else '—' }}</span></div>
+        <div><span class="meta-label">Matches</span><span class="meta-value" data-challonge-matches>{{ tournament.get('total_matches') if tournament else '—' }}</span></div>
+        <div><span class="meta-label">Last Update</span><span class="meta-value" data-challonge-updated>{{ payload.get('fetched_at') or '—' }}</span></div>
+      </div>
+    </div>
+    <div class="tournament-links">
+      <a class="btn btn-ghost" data-challonge-link href="{{ tournament.get('url') if tournament else '#' }}" target="_blank" rel="noopener" {% if not tournament or not tournament.get('url') %}hidden{% endif %}>View on Challonge</a>
+      {% set config_message = 'Challonge integration is not configured.' %}
+      {% if payload.get('error') %}
+        <span class="error-chip" data-challonge-error>{{ payload.get('error') }}</span>
+      {% elif not payload.get('configured', True) %}
+        <span class="error-chip" data-challonge-error>{{ config_message }}</span>
+      {% else %}
+        <span class="error-chip" data-challonge-error hidden></span>
+      {% endif %}
+    </div>
+  </section>
+
+  <div class="grid grid-2 tournament-main">
+    <section class="panel current-match" data-challonge-current>
+      <h3 class="panel-title">Current Match</h3>
+      {% if tournament and tournament.get('current_match') %}
+        {% set match = tournament.get('current_match') %}
+        <div class="current-match-card" data-current-match-id="{{ match.get('id') }}">
+          <div class="match-round">{{ match.get('round_label') or 'Round' }}</div>
+          <div class="current-versus">
+            <div class="current-player {{ 'winner' if match.get('winner_slot') == 'player1' else '' }}">{{ match.get('player1_name') or 'TBD' }}</div>
+            <div class="current-vs">vs</div>
+            <div class="current-player {{ 'winner' if match.get('winner_slot') == 'player2' else '' }}">{{ match.get('player2_name') or 'TBD' }}</div>
+          </div>
+          <div class="current-meta">
+            {% if match.get('score_text') %}<span class="match-score">{{ match.get('score_text') }}</span>{% endif %}
+            <span class="match-state">{{ match.get('status_text') }}</span>
+          </div>
+        </div>
+      {% else %}
+        <p class="empty-copy">No live match right now.</p>
+      {% endif %}
+    </section>
+
+    <section class="panel upcoming-matches" data-challonge-upcoming>
+      <h3 class="panel-title">Upcoming Matches</h3>
+      {% if tournament and tournament.get('upcoming_matches') %}
+        <ul class="match-list">
+          {% for match in tournament.get('upcoming_matches') %}
+            {{ match_row(match) }}
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="empty-copy">No upcoming matches have been posted.</p>
+      {% endif %}
+    </section>
+  </div>
+
+  <section class="panel recent-matches" data-challonge-recent>
+    <h3 class="panel-title">Recent Results</h3>
+    {% if tournament and tournament.get('recent_matches') %}
+      <ul class="match-list">
+        {% for match in tournament.get('recent_matches') %}
+          {{ match_row(match) }}
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="empty-copy">No matches have been completed yet.</p>
+    {% endif %}
+  </section>
+
+  <section class="panel bracket-overview" data-challonge-rounds>
+    <h3 class="panel-title">Bracket Overview</h3>
+    {% if tournament and tournament.get('rounds') %}
+      <div class="rounds-grid">
+        {% for round in tournament.get('rounds') %}
+          <div class="round-card" data-round="{{ round.get('round') }}">
+            <h4 class="round-title">{{ round.get('round_label') }}</h4>
+            <ul class="match-list compact">
+              {% for match in round.get('matches') %}
+                {{ match_row(match) }}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="empty-copy">Bracket data will appear once matches are seeded.</p>
+    {% endif %}
+  </section>
+</div>
+
+<script src="{{ url_for('static', filename='challonge_live.js') }}"></script>
+{% endblock %}
